@@ -1,0 +1,1145 @@
+﻿<Window x:Class="Library.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Library"
+        mc:Ignorable="d"
+        WindowStyle="SingleBorderWindow"
+        Title="Library" Height="650" Width="800" 
+        WindowStartupLocation="CenterScreen" Cursor="Pen" Icon="/Images/MainIcon.png">
+    <Window.Resources>
+        <Style TargetType="TabItem">
+            <Setter Property="LayoutTransform" >
+                <Setter.Value>
+                    <ScaleTransform x:Name="scaleTransform" />
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" To="1.3" Duration="0:0:0.5" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="LayoutTransform.ScaleX" To="1" Duration="0:0:0.5" /> 
+                        </Storyboard> 
+                    </BeginStoryboard> 
+                </EventTrigger> 
+            </Style.Triggers> 
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Button.Content" Value="&#xE739;" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
+                    <Setter Property="Button.Content" Value="&#xE923;" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="/Images/book.jpeg"/>
+    </Window.Background>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="151*"/>
+            <ColumnDefinition Width="146*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Background="Transparent" Grid.ColumnSpan="2" Margin="0,0,-0.4,0">
+            <TabItem Header="Books" Background="OldLace" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+                <Border Background="DarkGray" BorderThickness="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.1"/>
+                            <RowDefinition Height="164.7"/>
+                            <RowDefinition Height="22.7"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Margin="0,0,-0.4,0.2" Grid.RowSpan="3">
+                            <Border Background="DarkGray" BorderThickness="3">
+                                <TextBlock Height="25" FontSize="18" Background="Peru" TextAlignment="Center" FontWeight="SemiBold">Books</TextBlock>
+                            </Border>
+                            <Grid Background="NavajoWhite">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2">Book Title</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5">Author Name</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 4">Purchase Cost</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 25">Sale Cost</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Title,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.AuthorName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.PurchaseCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.SaleCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 5">Quantity</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Branch</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Note</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Quantity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <ComboBox FontSize="15" Margin="5 5" ItemsSource="{Binding Branches, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                  SelectedItem="{Binding CurrentBook.Branch}" DisplayMemberPath="Address">
+                                        <ComboBox.Style>
+                                            <Style TargetType="{x:Type ComboBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
+                                    <TextBox Height="60" FontSize="15" Margin="5 5 5 15"  Text="{Binding CurrentGroup.Note,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="4">
+                                    <Button x:Name="btnAddBook" Height="30" Margin="4 4" Command="{Binding AddBook}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Add"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainListBook, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="Content" Value="Add"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding EditBook}" CommandParameter="2">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Edit"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainListBook, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding RejectBook}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Reject"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding DeleteBook}" CommandParameter="4">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Delete"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainListBook, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <ListView x:Name="MainListBook" Background="PapayaWhip" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredBooks}" 
+                      SelectedItem="{Binding SelectedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      FontWeight="DemiBold"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,22.2,-0.4,-0.2" Grid.RowSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="Wheat" />
+                                    <Setter Property="BorderBrush" Value="BlanchedAlmond" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="Red" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.Style>
+                                <Style TargetType="{x:Type ListView}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="SelectedIndex" Value="-1"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding StateBook, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.Style>
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=No}" Header=" No " Width="Auto"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Header=" Title " Width="Auto"/>
+                                    <GridViewColumn Header=" Author Name " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding AuthorName}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Purchase Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="5,0" Text="{Binding PurchaseCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Sale Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding SaleCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Stock " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Quantity}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Branch " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Branch.Address}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </TabItem>
+            
+            <TabItem  Header="Customers" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+                <Border Background="DarkGray" BorderThickness="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.1"/>
+                            <RowDefinition Height="164.7"/>
+                            <RowDefinition Height="22.7"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Margin="0,0,-0.4,0.2" Grid.RowSpan="3">
+                            <Border Background="DarkGray" BorderThickness="3">
+                                <TextBlock Height="25" FontSize="18" Background="Blue" TextAlignment="Center" FontWeight="SemiBold">Customers</TextBlock>
+                            </Border>
+                            <Grid Background="Beige">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2">Name</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5">Surname</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 4">Phone Number</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.Surname,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.PhoneNumber,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2">Joined Date</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Note</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <DatePicker FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.JoinedDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <DatePicker.Style>
+                                            <Style TargetType="{x:Type DatePicker}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </DatePicker.Style>
+                                    </DatePicker>
+
+                                    <TextBox Height="60" FontSize="15" Margin="5 5 5 15"  Text="{Binding CurrentCustomer.Note,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="4">
+                                    <Button x:Name="btnAddCustomer" Height="30" Margin="4 4" Command="{Binding AddCustomer}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Add"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainListCustomer, Path=IsEnabled}" Value="false">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding EditCustomer}" CommandParameter="2">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Edit"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding RejectCustomer}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Reject"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding DeleteCustomer}" CommandParameter="4">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Delete"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <ListView x:Name="MainListCustomers" Background="LightSkyBlue" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredCustomers}" 
+                      SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      FontWeight="DemiBold"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,22.2,-0.4,-0.2" Grid.RowSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="AliceBlue" />
+                                    <Setter Property="BorderBrush" Value="BlanchedAlmond" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="Red" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.Style>
+                                <Style TargetType="{x:Type ListView}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="SelectedIndex" Value="-1"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.Style>
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=No}" Header=" No " Width="Auto"/>
+                                    <GridViewColumn Header=" Name " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Name}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Surname " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="5,0" Text="{Binding Surname}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Phone Number " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding PhoneNumber}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Joined Date " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding JoinedDate}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Note " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Note}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </TabItem>
+            <TabItem  Header="Employee" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+                <Border Background="DarkGray" BorderThickness="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.1"/>
+                            <RowDefinition Height="164.7"/>
+                            <RowDefinition Height="22.7"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Margin="0,0,-0.4,0.2" Grid.RowSpan="3">
+                            <Border Background="DarkGray" BorderThickness="3">
+                                <TextBlock Height="25" FontSize="18" Background="Peru" TextAlignment="Center" FontWeight="SemiBold">Employees</TextBlock>
+                            </Border>
+                            <Grid Background="NavajoWhite">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2">Book Title</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5">Author Name</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 4">Purchase Cost</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 25">Sale Cost</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Title,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.AuthorName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.PurchaseCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.SaleCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 5">Quantity</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Branch</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Note</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Quantity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <ComboBox FontSize="15" Margin="5 5" ItemsSource="{Binding Branches, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                  SelectedItem="{Binding CurrentBook.Branch}" DisplayMemberPath="Address">
+                                        <ComboBox.Style>
+                                            <Style TargetType="{x:Type ComboBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
+                                    <TextBox Height="60" FontSize="15" Margin="5 5 5 15"  Text="{Binding CurrentGroup.Note,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="4">
+                                    <Button x:Name="btnAddEmployee" Height="30" Margin="4 4" Command="{Binding Add}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Add"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainList, Path=IsEnabled}" Value="false">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Edit}" CommandParameter="2">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Edit"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Reject}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Reject"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Delete}" CommandParameter="4">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Delete"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <ListView x:Name="MainListEmployee" Background="PapayaWhip" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredItems}" 
+                      SelectedItem="{Binding SelectedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      FontWeight="DemiBold"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,22.2,-0.4,-0.2" Grid.RowSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="AliceBlue" />
+                                    <Setter Property="BorderBrush" Value="BlanchedAlmond" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="Red" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.Style>
+                                <Style TargetType="{x:Type ListView}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="SelectedIndex" Value="-1"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.Style>
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=No}" Header=" No " Width="Auto"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Header=" Title " Width="Auto"/>
+                                    <GridViewColumn Header=" Author Name " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding AuthorName}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Purchase Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="5,0" Text="{Binding PurchaseCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Sale Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding SaleCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Stock " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Quantity}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Branch " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Branch.Address}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </TabItem>
+            <TabItem  Header="Branches" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+                <Border Background="DarkGray" BorderThickness="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4.1"/>
+                            <RowDefinition Height="164.7"/>
+                            <RowDefinition Height="22.7"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Margin="0,0,-0.4,0.2" Grid.RowSpan="3">
+                            <Border Background="DarkGray" BorderThickness="3">
+                                <TextBlock Height="25" FontSize="18" Background="Peru" TextAlignment="Center" FontWeight="SemiBold">Branches</TextBlock>
+                            </Border>
+                            <Grid Background="NavajoWhite">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2">Book Title</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5">Author Name</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 4">Purchase Cost</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 25">Sale Cost</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Title,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.AuthorName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.PurchaseCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.SaleCost,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 5">Quantity</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Branch</TextBlock>
+                                    <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5">Note</TextBlock>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="3">
+                                    <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentBook.Quantity,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                    <ComboBox FontSize="15" Margin="5 5" ItemsSource="{Binding Branches, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" 
+                                  SelectedItem="{Binding CurrentBook.Branch}" DisplayMemberPath="Address">
+                                        <ComboBox.Style>
+                                            <Style TargetType="{x:Type ComboBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
+                                    <TextBox Height="60" FontSize="15" Margin="5 5 5 15"  Text="{Binding CurrentGroup.Note,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                                        <TextBox.Style>
+                                            <Style TargetType="{x:Type TextBox}">
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBox.Style>
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="4">
+                                    <Button x:Name="btnAddBranches" Height="30" Margin="4 4" Command="{Binding Add}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Add"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding ="{Binding ElementName=MainList, Path=IsEnabled}" Value="false">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Edit}" CommandParameter="2">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Edit"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="False"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Reject}" CommandParameter="1">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Reject"/>
+                                                <Setter Property="IsEnabled" Value="False"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                        <Setter Property="IsEnabled" Value="True"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                    <Button Height="30" Margin="4 4" Command="{Binding Delete}" CommandParameter="4">
+                                        <Button.BitmapEffect>
+                                            <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                        </Button.BitmapEffect>
+                                        <Button.Style>
+                                            <Style TargetType="{x:Type Button}">
+                                                <Setter Property="Content" Value="Delete"/>
+                                                <Setter Property="IsEnabled" Value="True"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger 
+                                             Binding ="{Binding ElementName=MainList, Path=SelectedIndex}" Value="-1">
+                                                        <Setter Property="IsEnabled" Value="false"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <ListView x:Name="MainListBranches" Background="PapayaWhip" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredItems}" 
+                      SelectedItem="{Binding SelectedBook,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      FontWeight="DemiBold"
+                      ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Visible" Margin="0,22.2,-0.4,-0.2" Grid.RowSpan="2">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Background" Value="AliceBlue" />
+                                    <Setter Property="BorderBrush" Value="BlanchedAlmond" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Foreground" Value="Red" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.Style>
+                                <Style TargetType="{x:Type ListView}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Setter Property="SelectedIndex" Value="-1"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding State, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ListView.Style>
+                            <ListView.View>
+                                <GridView >
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=No}" Header=" No " Width="Auto"/>
+                                    <GridViewColumn DisplayMemberBinding="{Binding Path=Title}" Header=" Title " Width="Auto"/>
+                                    <GridViewColumn Header=" Author Name " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding AuthorName}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Purchase Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="5,0" Text="{Binding PurchaseCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Sale Cost " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding SaleCost}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Stock " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Quantity}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header=" Branch " Width="Auto">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Padding="0.5" Text="{Binding Branch.Address}" TextAlignment="Center"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Border>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
