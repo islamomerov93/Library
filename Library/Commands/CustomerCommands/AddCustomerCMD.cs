@@ -17,45 +17,45 @@ namespace Commands.CustomerCommands
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == LibraryVM.StateCustomer)
             {
-                if (LibraryVM.btnAddBook.Content.ToString() == "Add")
+                if (LibraryVM.btnAddCustomer.Content.ToString() == "Add")
                 {
                     try
                     {
-                        LibraryVM.Books.Add(new Book(LibraryVM.NoBook++, LibraryVM.CurrentBook.Title, LibraryVM.CurrentBook.AuthorName, LibraryVM.CurrentBook.PurchaseCost,
-                        LibraryVM.CurrentBook.SaleCost, LibraryVM.CurrentBook.Quantity, LibraryVM.CurrentBook.Branch, LibraryVM.CurrentBook.Note));
+                        var No = LibraryVM.Customers.Count + 1;
+                        LibraryVM.Customers.Add(new Customer(No, LibraryVM.CurrentCustomer.Name, LibraryVM.CurrentCustomer.Surname,
+                            LibraryVM.CurrentCustomer.PhoneNumber, LibraryVM.CurrentCustomer.JoinedDate, LibraryVM.CurrentCustomer.Note));
+                        LibraryVM.CurrentCustomer = new Customer();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Fill all fields", "Error occured while adding book!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Fill all fields", "Error occured while adding Customer!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    
                 }
                 else
                 {
-                    foreach (var book in LibraryVM.Books)
+                    foreach (var book in LibraryVM.Customers)
                     {
-                        if (book.No == LibraryVM.CurrentBook.No)
+                        if (book.No == LibraryVM.CurrentCustomer.No)
                         {
-                            book.Title = LibraryVM.CurrentBook.Title;
-                            book.AuthorName = LibraryVM.CurrentBook.AuthorName;
-                            book.PurchaseCost = LibraryVM.CurrentBook.PurchaseCost;
-                            book.SaleCost = LibraryVM.CurrentBook.SaleCost;
-                            book.Quantity = LibraryVM.CurrentBook.Quantity;
-                            book.Branch = LibraryVM.CurrentBook.Branch;
-                            book.Note = LibraryVM.CurrentBook.Note;
+                            book.Name = LibraryVM.CurrentCustomer.Name;
+                            book.Surname = LibraryVM.CurrentCustomer.Surname;
+                            book.PhoneNumber = LibraryVM.CurrentCustomer.PhoneNumber;
+                            book.JoinedDate = LibraryVM.CurrentCustomer.JoinedDate;
+                            book.Note = LibraryVM.CurrentCustomer.Note;
+                            LibraryVM.CurrentCustomer = new Customer();
+                            LibraryVM.btnAddCustomer.Content = "Add";
+                            LibraryVM.StateCustomer = 0;
+                            return;
                         }
                     }
                 }
-                LibraryVM.StateBranch = 0;
+                LibraryVM.StateCustomer = 0;
                 return;
             }
-            LibraryVM.CurrentBook.Clear();
-            if (LibraryVM.CurrentBranch.No == 0) LibraryVM.btnAddBranch.Content = "Add";
-            else LibraryVM.btnAddBranch.Content = "Save";
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBranch = value;
+            LibraryVM.StateCustomer = value;
         }
     }
 }

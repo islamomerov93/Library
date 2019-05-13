@@ -13,14 +13,14 @@ namespace Commands.CustomerCommands
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == LibraryVM.StateCustomer)
             {
-                LibraryVM.StateBook = 0;
-                LibraryVM.CurrentBook = null;
+                LibraryVM.StateCustomer = 0;
+                LibraryVM.CurrentCustomer = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
+            LibraryVM.StateCustomer = value;
         }
     }
 }

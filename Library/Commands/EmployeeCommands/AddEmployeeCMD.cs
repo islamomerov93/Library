@@ -17,45 +17,47 @@ namespace Commands.EmployeeCommands
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == LibraryVM.StateEmployee)
             {
-                if (LibraryVM.btnAddBook.Content.ToString() == "Add")
+                if (LibraryVM.btnAddEmployee.Content.ToString() == "Add")
                 {
                     try
                     {
-                        LibraryVM.Books.Add(new Book(LibraryVM.NoBook++, LibraryVM.CurrentBook.Title, LibraryVM.CurrentBook.AuthorName, LibraryVM.CurrentBook.PurchaseCost,
-                        LibraryVM.CurrentBook.SaleCost, LibraryVM.CurrentBook.Quantity, LibraryVM.CurrentBook.Branch, LibraryVM.CurrentBook.Note));
+                        var No = LibraryVM.Employees.Count + 1;
+                        LibraryVM.Employees.Add(new Employee(No, LibraryVM.CurrentEmployee.Name, LibraryVM.CurrentEmployee.Surname,
+                            LibraryVM.CurrentEmployee.PhoneNumber, LibraryVM.CurrentEmployee.Branch, 
+                            LibraryVM.CurrentEmployee.Salary, LibraryVM.CurrentEmployee.Note));
+                        LibraryVM.CurrentEmployee = new Employee();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Fill all fields", "Error occured while adding book!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Fill all fields", "Error occured while adding Employee!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                    
                 }
                 else
                 {
-                    foreach (var book in LibraryVM.Books)
+                    foreach (var employee in LibraryVM.Employees)
                     {
-                        if (book.No == LibraryVM.CurrentBook.No)
+                        if (employee.No == LibraryVM.CurrentEmployee.No)
                         {
-                            book.Title = LibraryVM.CurrentBook.Title;
-                            book.AuthorName = LibraryVM.CurrentBook.AuthorName;
-                            book.PurchaseCost = LibraryVM.CurrentBook.PurchaseCost;
-                            book.SaleCost = LibraryVM.CurrentBook.SaleCost;
-                            book.Quantity = LibraryVM.CurrentBook.Quantity;
-                            book.Branch = LibraryVM.CurrentBook.Branch;
-                            book.Note = LibraryVM.CurrentBook.Note;
+                            employee.Name = LibraryVM.CurrentEmployee.Name;
+                            employee.Surname = LibraryVM.CurrentEmployee.Surname;
+                            employee.PhoneNumber = LibraryVM.CurrentEmployee.PhoneNumber;
+                            employee.Salary = LibraryVM.CurrentEmployee.Salary;
+                            employee.Branch = LibraryVM.CurrentEmployee.Branch;
+                            employee.Note = LibraryVM.CurrentEmployee.Note;
+                            LibraryVM.CurrentEmployee = new Employee();
+                            LibraryVM.btnAddEmployee.Content = "Add";
+                            LibraryVM.StateEmployee = 0;
+                            return;
                         }
                     }
                 }
-                LibraryVM.StateBranch = 0;
+                LibraryVM.StateEmployee = 0;
                 return;
             }
-            LibraryVM.CurrentBook.Clear();
-            if (LibraryVM.CurrentBranch.No == 0) LibraryVM.btnAddBranch.Content = "Add";
-            else LibraryVM.btnAddBranch.Content = "Save";
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBranch = value;
+            LibraryVM.StateEmployee = value;
         }
     }
 }

@@ -16,14 +16,14 @@ namespace Library.Entities
 
         public Customer Clone()
         {
-            return new Customer(No,Name,Surname,PnoneNumber,JoinedDate,Note);
+            return new Customer(No,Name,Surname,PhoneNumber,JoinedDate,Note);
         }
         public Customer(int no, string name, string surname, string pnoneNumber, DateTime joinedDate, string note) : base(no, name, surname, pnoneNumber,note)
         {
             No = no;
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Surname = surname ?? throw new ArgumentNullException(nameof(surname));
-            PnoneNumber = pnoneNumber ?? throw new ArgumentNullException(nameof(pnoneNumber));
+            PhoneNumber = pnoneNumber ?? throw new ArgumentNullException(nameof(pnoneNumber));
             Note = note;
             JoinedDate = joinedDate;
         }

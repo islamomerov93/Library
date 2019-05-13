@@ -18,10 +18,10 @@ namespace Commands.CustomerCommands
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
-            LibraryVM.Books.Remove(LibraryVM.Books.FirstOrDefault(x=>x.No == LibraryVM.CurrentBook.No));
-            LibraryVM.MyFilteredBooks = new ObservableCollection<Book>(LibraryVM.Books);
-            LibraryVM.CurrentBook = null;
+            LibraryVM.StateCustomer = value;
+            LibraryVM.Customers.Remove(LibraryVM.Customers.FirstOrDefault(x => x.No == LibraryVM.CurrentCustomer.No));
+            LibraryVM.MyFilteredCustomers = new ObservableCollection<Customer>(LibraryVM.Customers);
+            LibraryVM.CurrentCustomer = null;
         }
     }
 }

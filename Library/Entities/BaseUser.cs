@@ -12,19 +12,19 @@ namespace Library.Entities
         public int No { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string PnoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string Note { get; set; }
 
         protected BaseUser()
         {
         }
 
-        protected BaseUser(int no, string name, string surname, string pnoneNumber, string note)
+        protected BaseUser(int no, string name, string surname, string phoneNumber, string note)
         {
             No = no;
             Name = name ?? throw new ArgumentNullException(nameof(name));
             Surname = surname ?? throw new ArgumentNullException(nameof(surname));
-            PnoneNumber = pnoneNumber ?? throw new ArgumentNullException(nameof(pnoneNumber));
+            PhoneNumber = phoneNumber ?? throw new ArgumentNullException(nameof(phoneNumber));
             Note = note;
         }
     }

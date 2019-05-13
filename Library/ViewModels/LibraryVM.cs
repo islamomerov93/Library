@@ -87,7 +87,7 @@ namespace Library.ViewModels
             set { branches = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(Branches))); }
         }
 
-        ObservableCollection<Branch> myFilteredBranchs;
+        ObservableCollection<Branch> myFilteredBranches;
         public ObservableCollection<Branch> MyFilteredBranches
         {
             get
@@ -95,7 +95,7 @@ namespace Library.ViewModels
                 if (SearchText == null) return branches;
                 return new ObservableCollection<Branch>(branches.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) || x.Address.ToLower().Contains(SearchText.ToLower())).ToList());
             }
-            set { myFilteredBranchs = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredBranches))); }
+            set { myFilteredBranches = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredBranches))); }
         }
 
         private Branch selectedBranch;
@@ -145,7 +145,7 @@ namespace Library.ViewModels
                 if (SearchText == null) return customers;
                 return new ObservableCollection<Customer>(customers.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) ||
                                                                           x.Surname.ToLower().Contains(SearchText.ToLower()) ||
-                                                                          x.PnoneNumber.ToLower().Contains(SearchText.ToLower())).ToList());
+                                                                          x.PhoneNumber.ToLower().Contains(SearchText.ToLower())).ToList());
             }
             set { myFilteredCustomers = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredCustomers))); }
         }
@@ -197,7 +197,7 @@ namespace Library.ViewModels
                 if (SearchText == null) return employees;
                 return new ObservableCollection<Employee>(employees.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) ||
                                                                           x.Surname.ToLower().Contains(SearchText.ToLower()) ||
-                                                                          x.PnoneNumber.ToLower().Contains(SearchText.ToLower()) ||
+                                                                          x.PhoneNumber.ToLower().Contains(SearchText.ToLower()) ||
                                                                           x.Branch.Address.ToLower().Contains(SearchText.ToLower()) ||
                                                                           x.Branch.Name.ToLower().Contains(SearchText.ToLower())).ToList());
             }

@@ -27,20 +27,31 @@ namespace Library
             Branches.Add(branch3);
             Branches.Add(branch4);
             LibraryVM.Branches = Branches;
+            LibraryVM.btnAddBranch = btnAddBranch;
 
-            DateTime dateTime = new DateTime();
             ObservableCollection<Customer> Customers = new ObservableCollection<Customer>();
-            Customer customer1 = new Customer(LibraryVM.NoCustomer++, "Islam", "Omerov", "050-586-67-18", dateTime,"");
-            Customer customer2 = new Customer(LibraryVM.NoCustomer++, "Saleh", "Aghabeyli", "050-586-67-18", dateTime,"");
-            Customer customer3 = new Customer(LibraryVM.NoCustomer++, "Tural", "Mustafayev", "050-586-67-18", dateTime,"");
-            Customer customer4 = new Customer(LibraryVM.NoCustomer++, "Cavid", "Eliyev", "050-586-67-18", dateTime,"");
+            Customer customer1 = new Customer(LibraryVM.NoCustomer++, "Islam", "Omerov", "050-586-67-18", DateTime.Now, "");
+            Customer customer2 = new Customer(LibraryVM.NoCustomer++, "Saleh", "Aghabeyli", "050-586-67-18", DateTime.Now, "");
+            Customer customer3 = new Customer(LibraryVM.NoCustomer++, "Tural", "Mustafayev", "050-586-67-18", DateTime.Now, "");
+            Customer customer4 = new Customer(LibraryVM.NoCustomer++, "Cavid", "Eliyev", "050-586-67-18", DateTime.Now, "");
             Customers.Add(customer1);
             Customers.Add(customer2);
             Customers.Add(customer3);
             Customers.Add(customer4);
             LibraryVM.Customers = Customers;
             LibraryVM.btnAddCustomer = btnAddCustomer;
-            DataContext = LibraryVM;
+
+            ObservableCollection<Employee> Employees = new ObservableCollection<Employee>();
+            Employee employee1 = new Employee(LibraryVM.NoCustomer++, "Islam", "Omerov", "050-586-67-18", branch1, 1000, "");
+            Employee employee2 = new Employee(LibraryVM.NoCustomer++, "Saleh", "Aghabeyli", "050-586-67-18", branch2, 1100, "");
+            Employee employee3 = new Employee(LibraryVM.NoCustomer++, "Tural", "Mustafayev", "050-586-67-18", branch3, 1200, "");
+            Employee employee4 = new Employee(LibraryVM.NoCustomer++, "Cavid", "Eliyev", "050-586-67-18", branch4, 1300, "");
+            Employees.Add(employee1);
+            Employees.Add(employee2);
+            Employees.Add(employee3);
+            Employees.Add(employee4);
+            LibraryVM.Employees = Employees;
+            LibraryVM.btnAddEmployee = btnAddEmployee;
 
             ObservableCollection<Book> Books = new ObservableCollection<Book>();
             Book book1 = new Book(LibraryVM.NoBook++, "C#",  "Islam", 10, 20, 50, branch1, "");

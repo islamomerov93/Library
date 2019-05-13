@@ -15,7 +15,8 @@ namespace Commands.CustomerCommands
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateBook = 1;
+                LibraryVM.StateCustomer = 1;
+                LibraryVM.btnAddCustomer.Content = "Save";
                 return;
             }
         }
