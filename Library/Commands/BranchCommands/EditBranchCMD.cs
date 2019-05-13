@@ -15,7 +15,8 @@ namespace Commands.BranchCommands
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateBook = 1;
+                LibraryVM.StateBranch = 1;
+                LibraryVM.btnAddBranch.Content = "Save";
                 return;
             }
         }

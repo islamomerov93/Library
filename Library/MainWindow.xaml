@@ -42,15 +42,15 @@
         </Style>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="/Images/book.jpeg"/>
+        <ImageBrush ImageSource="/Images/book.jpg"/>
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="151*"/>
             <ColumnDefinition Width="146*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Background="Transparent" Grid.ColumnSpan="2" Margin="10 10">
-            <TabItem Header="Books" Background="OldLace" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+        <TabControl Background="Transparent" Grid.ColumnSpan="2" Margin="10 10" TabStripPlacement="Top">
+            <TabItem Header="Books" Background="LightSalmon" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
                 <Border Background="DarkGray" BorderThickness="5">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -329,8 +329,8 @@
                     </Grid>
                 </Border>
             </TabItem>
-            
-            <TabItem  Header="Customers" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+
+            <TabItem  Header="Customers" Background="Wheat" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
                 <Border Background="DarkGray" BorderThickness="5">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -582,7 +582,7 @@
                     </Grid>
                 </Border>
             </TabItem>
-            <TabItem  Header="Employee" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+            <TabItem  Header="Employee" Background="LightSalmon" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
                 <Border Background="DarkGray" BorderThickness="5">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -855,7 +855,7 @@
                     </Grid>
                 </Border>
             </TabItem>
-            <TabItem  Header="Branches" Background="LightGray" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
+            <TabItem  Header="Branches" Background="Wheat" FontSize="14" FontWeight="SemiBold" FontFamily="Arial" Opacity="0.6">
                 <Border Background="DarkGray" BorderThickness="5">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -866,7 +866,7 @@
                         </Grid.RowDefinitions>
                         <StackPanel Margin="0,0,-0.4,0.2" Grid.RowSpan="3">
                             <Border Background="DarkGray" BorderThickness="3">
-                                <TextBlock Height="25" FontSize="18" Background="Peru" TextAlignment="Center" FontWeight="SemiBold">Branches</TextBlock>
+                                <TextBlock Height="25" FontSize="18" Background="SandyBrown" TextAlignment="Center" FontWeight="SemiBold">Branches</TextBlock>
                             </Border>
                             <Grid Background="NavajoWhite">
                                 <Grid.ColumnDefinitions>

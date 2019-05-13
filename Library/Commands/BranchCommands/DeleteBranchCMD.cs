@@ -18,10 +18,10 @@ namespace Commands.BranchCommands
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
-            LibraryVM.Books.Remove(LibraryVM.Books.FirstOrDefault(x=>x.No == LibraryVM.CurrentBook.No));
-            LibraryVM.MyFilteredBooks = new ObservableCollection<Book>(LibraryVM.Books);
-            LibraryVM.CurrentBook = null;
+            LibraryVM.StateBranch = value;
+            LibraryVM.Branches.Remove(LibraryVM.Branches.FirstOrDefault(x => x.No == LibraryVM.CurrentBranch.No));
+            LibraryVM.MyFilteredBranches = new ObservableCollection<Branch>(LibraryVM.Branches);
+            LibraryVM.CurrentBranch = null;
         }
     }
 }

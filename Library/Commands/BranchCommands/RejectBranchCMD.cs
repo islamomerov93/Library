@@ -13,14 +13,14 @@ namespace Commands.BranchCommands
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == LibraryVM.StateBranch)
             {
-                LibraryVM.StateBook = 0;
-                LibraryVM.CurrentBook = null;
+                LibraryVM.StateBranch = 0;
+                LibraryVM.CurrentBranch = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
+            LibraryVM.StateBranch = value;
         }
     }
 }
