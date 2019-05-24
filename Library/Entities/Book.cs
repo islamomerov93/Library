@@ -27,10 +27,10 @@ namespace Library.Entities
 
         public void Clear()
         {
-            No = default;
-            Title = AuthorName = Note = default;
-            PurchaseCost = SaleCost = Quantity = default;
-            Branch = default;
+            No = 0;
+            Title = AuthorName = Note = null;
+            PurchaseCost = SaleCost = Quantity = 0;
+            Branch = null;
 
         }
         public Book(int no, string title, string authorName, float purchaseCost, int saleCost, int quantity, Branch branch, string note)
