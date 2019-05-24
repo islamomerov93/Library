@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
-        Title="L I B R A R Y" Height="650" Width="800" 
+        Title="L I B R A R Y" Height="650" Width="1000" 
         WindowStartupLocation="CenterScreen" Cursor="Pen" Icon="/Images/MainIcon.png"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -43,11 +43,46 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="MenuBtn" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#373737" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="4" Background="{TemplateBinding Background}">
+                            <Grid>
+                                <Path x:Name="PathIcon" Width="15" Height="30" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Margin="10,0,0,0" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E59400" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="OrangeRed" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
         <Storyboard x:Key="sbShowLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-250,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-302,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-250,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-302,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
 
 
@@ -81,19 +116,52 @@
     </Window.Resources>
     <Border Padding="2" Background="#111F26">
         <Grid>
-            <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="630" HorizontalAlignment="Left" Margin="-252,0,0,0">
-                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="250" Background="#00E1FF" Opacity="0.9" CornerRadius="0,20,20,0">
+            <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="640" HorizontalAlignment="Left" Margin="-302,0,0,0">
+                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="300" Background="#1C7589" CornerRadius="0,20,20,0">
                     <StackPanel>
-                        <TextBlock Margin="10,10,5,0" FontSize="20" FontWeight="SemiBold" Foreground="DarkBlue">Books</TextBlock>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Books</TextBlock>
                         <Grid Margin="5,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Height="30" Margin="5"/>
-                            <Button Height="30" Margin="5" Grid.Column="1"/>
-                            <Button Height="30" Margin="5" Grid.Column="2"/>
+                            <Button Style="{StaticResource MenuBtn}" Content="  Add"/>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1" Content="      Update"/>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2" Content="     Delete"/>
+                        </Grid>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Customers</TextBlock>
+                        <Grid Margin="5,0,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MenuBtn}">Add</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1">Update</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2">Delete</Button>
+                        </Grid>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Emplyee</TextBlock>
+                        <Grid Margin="5,0,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MenuBtn}">Add</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1">Update</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2">Delete</Button>
+                        </Grid>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Branch</TextBlock>
+                        <Grid Margin="5,0,5,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Style="{StaticResource MenuBtn}">Add</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1">Update</Button>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2">Delete</Button>
                         </Grid>
                     </StackPanel>
                 </Border>
