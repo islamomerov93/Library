@@ -55,7 +55,6 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="4" Background="{TemplateBinding Background}">
                             <Grid>
-                                <Path x:Name="PathIcon" Width="15" Height="30" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Margin="10,0,0,0" Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
                                 <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
                         </Border>
@@ -64,7 +63,6 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#E59400" />
                                 <Setter Property="Foreground" Value="White" />
-                                <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
@@ -79,34 +77,26 @@
 
 
         <Storyboard x:Key="sbShowLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-302,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-240,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-302,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-240,0,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
 
 
         <Storyboard x:Key="sbShowTopMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-70,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-80,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideTopMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-70,0,0" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-80,0,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
 
 
         <Storyboard x:Key="sbShowRightMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-100,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,-108,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
         <Storyboard x:Key="sbHideRightMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-100,0" AccelerationRatio=".9" Duration="0:0:1" />
-        </Storyboard>
-
-
-        <Storyboard x:Key="sbShowBottomMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,-100" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:1" />
-        </Storyboard>
-        <Storyboard x:Key="sbHideBottomMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,0,-100" AccelerationRatio=".9" Duration="0:0:1" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,0,-108,0" AccelerationRatio=".9" Duration="0:0:1" />
         </Storyboard>
 
         <Style TargetType="{x:Type TextBlock}">
@@ -114,10 +104,12 @@
             <Setter Property="FontSize" Value="14" />
         </Style>
     </Window.Resources>
-    <Border Padding="2" Background="#111F26">
+    <Border Padding="2" BorderThickness="5" BorderBrush="Black" Background="#111F26" Margin="0" CornerRadius="20">
         <Grid>
-            <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="640" HorizontalAlignment="Left" Margin="-302,0,0,0">
-                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="300" Background="#1C7589" CornerRadius="0,20,20,0">
+            <Border Height="40" Background="#01000000" VerticalAlignment="Top"
+            CornerRadius="10,10,0,0" MouseLeftButtonDown="DragWindow"/>
+            <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="638" HorizontalAlignment="Left" Margin="-240,0,0,0">
+                <Border BorderBrush="#1D66CB" BorderThickness="2" Width="230" Background="#1C7589" CornerRadius="017,20,20,20">
                     <StackPanel>
                         <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Books</TextBlock>
                         <Grid Margin="5,0,5,0">
@@ -126,9 +118,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Style="{StaticResource MenuBtn}" Content="  Add"/>
-                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1" Content="      Update"/>
-                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2" Content="     Delete"/>
+                            <Button Style="{StaticResource MenuBtn}" Content="Add"/>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="1" Content="Update"/>
+                            <Button Style="{StaticResource MenuBtn}" Grid.Column="2" Content="Delete"/>
                         </Grid>
                         <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Customers</TextBlock>
                         <Grid Margin="5,0,5,0">
@@ -171,7 +163,7 @@
                             <Image Source="Images/Menu.png" />
                         </StackPanel>
                     </Button>
-                    <Button Name="btnLeftMenuShow" Width="40" Height="40" Click="btnLeftMenuShow_Click" VerticalAlignment="Top" Margin="3,0,0,0" Background="Transparent" BorderThickness="1,0,0,0" BorderBrush="#1D66CB">
+                    <Button Name="btnLeftMenuShow" Width="40" Height="40" Click="btnLeftMenuShow_Click" VerticalAlignment="Top" Margin="6,5,0,0" Background="Transparent" BorderThickness="0" BorderBrush="#1D66CB">
                         <StackPanel>
                             <Image Source="Images/Menu.png" />
                         </StackPanel>
@@ -179,7 +171,7 @@
                 </Grid>
             </StackPanel>
 
-            <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-72,0,0">
+            <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-80,0,0">
                 <Border BorderBrush="#1D66CB" BorderThickness="1" Height="70" Background="#00E1FF" Opacity="0.9" CornerRadius="0,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -210,42 +202,32 @@
                 </Grid>
             </StackPanel>
 
-            <StackPanel Panel.ZIndex="2" Name="pnlRightMenu" Orientation="Horizontal" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,-100,0">
+            <StackPanel Panel.ZIndex="2" Name="pnlRightMenu" Orientation="Horizontal" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,-108,0">
                 <Grid>
                     <Button Name="btnRightMenuHide" Width="40" Height="40" Click="btnRightMenuHide_Click" Visibility="Hidden" Margin="0,0,3,0" Background="Transparent" BorderThickness="0">
                         <StackPanel>
                             <Image Source="Images/Close.png" />
                         </StackPanel>
                     </Button>
-                    <Button Name="btnRightMenuShow" Width="40" Height="40" Click="btnRightMenuShow_Click" VerticalAlignment="Top" Margin="0,5,5,0" Background="Transparent" BorderThickness="0,0,1,0" BorderBrush="#1D66CB">
+                    <Button Name="btnRightMenuShow" Width="40" Height="40" Click="btnRightMenuShow_Click" VerticalAlignment="Top" Margin="0,7,5,0" Background="Transparent" BorderThickness="0" BorderBrush="#1D66CB">
                         <StackPanel>
                             <Image Source="Images/Close.png" />
                         </StackPanel>
                     </Button>
                 </Grid>
-                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="95" Background="#FF746D"  Margin="0,5,3,5" Opacity="0.9" CornerRadius="10,0,0,10">
+                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="95" Background="#FF746D"  Margin="0,5,3,5" Opacity="0.9" CornerRadius="20,20,20,0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
-                        <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">5 sec.</TextBlock>
+                        <TextBlock x:Name="tbTime" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                     </Grid>
 
                 </Border>
             </StackPanel>
-
-            <StackPanel Panel.ZIndex="2" Name="pnlBottomMenu" Orientation="Vertical" Width="400" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,-100">
-                <Grid>
-                    <Button Name="btnBottomMenuHide" Width="48" Height="48" Click="btnBottomMenuHide_Click" Content="Hide" Visibility="Hidden"/>
-                    <Button Name="btnBottomMenuShow" Width="48" Height="48" Click="btnBottomMenuShow_Click" Content="Show"/>
-                </Grid>
-                <Border BorderBrush="#AF1719" BorderThickness="1" Height="100" Background="#4C808080" >
-
-                </Border>
-            </StackPanel>
-
+            
             <Grid Margin="15">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="151*"/>

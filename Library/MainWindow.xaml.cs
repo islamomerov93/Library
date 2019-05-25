@@ -4,7 +4,9 @@ using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace Library
 {
@@ -14,6 +16,8 @@ namespace Library
     public partial class MainWindow : Window
     {
         LibraryVM LibraryVM;
+        DispatcherTimer _timer;
+        TimeSpan _time;
         public MainWindow()
         {
             InitializeComponent();
@@ -67,6 +71,11 @@ namespace Library
             LibraryVM.btnAddBook = btnAddBook;
             DataContext = LibraryVM;
         }
+
+        protected void DragWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
         private void btnLeftMenuHide_Click(object sender, RoutedEventArgs e)
         {
             ShowHideMenu("sbHideLeftMenu", btnLeftMenuHide, btnLeftMenuShow, pnlLeftMenu);
@@ -91,25 +100,29 @@ namespace Library
 
         private void btnRightMenuHide_Click(object sender, RoutedEventArgs e)
         {
+            tbTime.Text = null;
+            _timer.Stop();
             ShowHideMenu("sbHideRightMenu", btnRightMenuHide, btnRightMenuShow, pnlRightMenu);
         }
 
         private void btnRightMenuShow_Click(object sender, RoutedEventArgs e)
         {
+            _time = TimeSpan.FromSeconds(5);
+
+            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                tbTime.Text = _time.ToString("c");
+                if (_time == TimeSpan.Zero) _timer.Stop();
+                _time = _time.Add(TimeSpan.FromSeconds(-1));
+                if (tbTime.Text == "00:00:00")
+                {
+                    System.Environment.Exit(1);
+                }
+            }, Application.Current.Dispatcher);
+
+            _timer.Start();
             ShowHideMenu("sbShowRightMenu", btnRightMenuHide, btnRightMenuShow, pnlRightMenu);
         }
-
-
-        private void btnBottomMenuHide_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("sbHideBottomMenu", btnBottomMenuHide, btnBottomMenuShow, pnlBottomMenu);
-        }
-
-        private void btnBottomMenuShow_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("sbShowBottomMenu", btnBottomMenuHide, btnBottomMenuShow, pnlBottomMenu);
-        }
-
 
         private void ShowHideMenu(string Storyboard, Button btnHide, Button btnShow, StackPanel pnl)
         {
