@@ -18,9 +18,24 @@ namespace Library
         LibraryVM LibraryVM;
         DispatcherTimer _timer;
         TimeSpan _time;
+        DispatcherTimer _timer2;
+        TimeSpan _time2;
+
+        new object objectNew;
         public MainWindow()
         {
             InitializeComponent();
+            _time2 = TimeSpan.FromSeconds(3);
+
+            _timer2 = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            {
+                if (_time2.Seconds == 3) btnTopMenuShow_Click(objectNew, new RoutedEventArgs()); 
+                if (_time2 == TimeSpan.Zero) _timer2.Stop();
+                _time2 = _time2.Add(TimeSpan.FromSeconds(-1));
+                if (_time2.Seconds == 0) btnTopMenuHide_Click(objectNew, new RoutedEventArgs());
+            }, Application.Current.Dispatcher);
+            _timer2.Start();
+
             this.LibraryVM = new LibraryVM();
             ObservableCollection<Branch> Branches = new ObservableCollection<Branch>();
             Branch branch1 = new Branch(LibraryVM.NoBranch++, "Upper Education", "Nizami Street", "");
@@ -107,7 +122,7 @@ namespace Library
 
         private void btnRightMenuShow_Click(object sender, RoutedEventArgs e)
         {
-            _time = TimeSpan.FromSeconds(5);
+            _time = TimeSpan.FromSeconds(3);
 
             _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
             {

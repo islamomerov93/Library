@@ -44,9 +44,10 @@
         </Style>
 
         <Style x:Key="MenuBtn" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="#373737" />
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Cyan" />
+            <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="2"/>
             <Setter Property="SnapsToDevicePixels" Value="True" />
 
@@ -61,8 +62,8 @@
 
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#E59400" />
-                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="Background" Value="Black" />
+                                <Setter Property="Foreground" Value="Cyan" />
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
@@ -111,7 +112,7 @@
             <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" Height="638" HorizontalAlignment="Left" Margin="-240,0,0,0">
                 <Border BorderBrush="#1D66CB" BorderThickness="2" Width="230" Background="#1C7589" CornerRadius="017,20,20,20">
                     <StackPanel>
-                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Books</TextBlock>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">BOOKS</TextBlock>
                         <Grid Margin="5,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -122,7 +123,7 @@
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="1" Content="Update"/>
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="2" Content="Delete"/>
                         </Grid>
-                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Customers</TextBlock>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">CUSTOMERS</TextBlock>
                         <Grid Margin="5,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -133,7 +134,7 @@
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="1">Update</Button>
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="2">Delete</Button>
                         </Grid>
-                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Emplyee</TextBlock>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">EMPLOYEES</TextBlock>
                         <Grid Margin="5,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -144,7 +145,7 @@
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="1">Update</Button>
                             <Button Style="{StaticResource MenuBtn}" Grid.Column="2">Delete</Button>
                         </Grid>
-                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">Branch</TextBlock>
+                        <TextBlock Margin="10,30,5,0" FontSize="22" FontWeight="SemiBold" Foreground="Black">BRANCHES</TextBlock>
                         <Grid Margin="5,0,5,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -160,19 +161,19 @@
                 <Grid>
                     <Button Name="btnLeftMenuHide" Width="40" Height="40" Click="btnLeftMenuHide_Click" Visibility="Hidden" VerticalAlignment="Top" Margin="3,0,0,0" Background="Transparent" BorderThickness="0" BorderBrush="#1D66CB">
                         <StackPanel>
-                            <Image Source="Images/Menu.png" />
+                            <Image Source="/Images/Menu.png" />
                         </StackPanel>
                     </Button>
                     <Button Name="btnLeftMenuShow" Width="40" Height="40" Click="btnLeftMenuShow_Click" VerticalAlignment="Top" Margin="6,5,0,0" Background="Transparent" BorderThickness="0" BorderBrush="#1D66CB">
                         <StackPanel>
-                            <Image Source="Images/Menu.png" />
+                            <Image Source="/Images/Menu.png" />
                         </StackPanel>
                     </Button>
                 </Grid>
             </StackPanel>
 
             <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-80,0,0">
-                <Border BorderBrush="#1D66CB" BorderThickness="1" Height="70" Background="#00E1FF" Opacity="0.9" CornerRadius="0,0,20,20">
+                <Border BorderBrush="#1D66CB" BorderThickness="1" Height="70" Background="#1C7589" Opacity="0.9" CornerRadius="0,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -191,12 +192,12 @@
                 <Grid>
                     <Button Name="btnTopMenuHide" Width="40" Height="40" Click="btnTopMenuHide_Click" Visibility="Hidden" Background="Transparent" BorderThickness="0,0,0,1" BorderBrush="#1D66CB">
                         <StackPanel>
-                            <Image Source="Images/User.png"/>
+                            <Image Source="/Images/User.png"/>
                         </StackPanel>
                     </Button>
                     <Button Name="btnTopMenuShow" Width="40" Height="40" Click="btnTopMenuShow_Click" Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#1D66CB" Margin="0,5,0,0">
                         <StackPanel>
-                            <Image Source="Images/User.png" />
+                            <Image Source="/Images/User.png" />
                         </StackPanel>
                     </Button>
                 </Grid>
@@ -206,23 +207,23 @@
                 <Grid>
                     <Button Name="btnRightMenuHide" Width="40" Height="40" Click="btnRightMenuHide_Click" Visibility="Hidden" Margin="0,0,3,0" Background="Transparent" BorderThickness="0">
                         <StackPanel>
-                            <Image Source="Images/Close.png" />
+                            <Image Source="/Images/Close.png" />
                         </StackPanel>
                     </Button>
                     <Button Name="btnRightMenuShow" Width="40" Height="40" Click="btnRightMenuShow_Click" VerticalAlignment="Top" Margin="0,7,5,0" Background="Transparent" BorderThickness="0" BorderBrush="#1D66CB">
                         <StackPanel>
-                            <Image Source="Images/Close.png" />
+                            <Image Source="/Images/Close.png" />
                         </StackPanel>
                     </Button>
                 </Grid>
-                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="95" Background="#FF746D"  Margin="0,5,3,5" Opacity="0.9" CornerRadius="20,20,20,0">
+                <Border BorderBrush="#1D66CB" BorderThickness="1" Width="95" Background="Transparent"  Margin="0,5,3,5" Opacity="0.5" CornerRadius="20,20,20,0">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
-                        <TextBlock x:Name="tbTime" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
+                        <TextBlock x:Name="tbTime" Foreground="White" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                     </Grid>
 
                 </Border>
