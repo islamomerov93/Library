@@ -5,22 +5,22 @@ namespace Commands.BookCommands
 {
     public class RejectBookCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public RejectBookCMD(LibraryVM LibraryVM)
+        BookVM BookVM;
+        public RejectBookCMD(BookVM BookVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BookVM = BookVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == BookVM.StateBook)
             {
-                LibraryVM.StateBook = 0;
-                LibraryVM.CurrentBook = null;
+                BookVM.StateBook = 0;
+                BookVM.CurrentBook = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
+            BookVM.StateBook = value;
         }
     }
 }

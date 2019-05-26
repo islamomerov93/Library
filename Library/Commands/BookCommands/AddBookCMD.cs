@@ -8,25 +8,25 @@ namespace Commands.BookCommands
 {
     public class AddBookCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        BookVM BookVM;
 
-        public AddBookCMD(LibraryVM LibraryVM)
+        public AddBookCMD(BookVM BookVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BookVM = BookVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == BookVM.StateBook)
             {
-                if (LibraryVM.btnAddBook.Content.ToString() == "Add")
+                if (BookVM.btnAddBook.Content.ToString() == "Add")
                 {
                     try
                     {
-                        var No = LibraryVM.Books.Count + 1;
-                        LibraryVM.Books.Add(new Book(No, LibraryVM.CurrentBook.Title, LibraryVM.CurrentBook.AuthorName, LibraryVM.CurrentBook.PurchaseCost,
-                        LibraryVM.CurrentBook.SaleCost, LibraryVM.CurrentBook.Quantity, LibraryVM.CurrentBook.Branch, LibraryVM.CurrentBook.Note));
-                        LibraryVM.CurrentBook = new Book();
+                        var No = BookVM.Books.Count + 1;
+                        BookVM.Books.Add(new Book(No, BookVM.CurrentBook.Title, BookVM.CurrentBook.AuthorName, BookVM.CurrentBook.PurchaseCost,
+                        BookVM.CurrentBook.SaleCost, BookVM.CurrentBook.Quantity, BookVM.CurrentBook.Branch, BookVM.CurrentBook.Note));
+                        BookVM.CurrentBook = new Book();
                     }
                     catch (Exception)
                     {
@@ -36,29 +36,29 @@ namespace Commands.BookCommands
                 }
                 else
                 {
-                    foreach (var book in LibraryVM.Books)
+                    foreach (var book in BookVM.Books)
                     {
-                        if (book.No == LibraryVM.CurrentBook.No)
+                        if (book.No == BookVM.CurrentBook.No)
                         {
-                            book.Title = LibraryVM.CurrentBook.Title;
-                            book.AuthorName = LibraryVM.CurrentBook.AuthorName;
-                            book.PurchaseCost = LibraryVM.CurrentBook.PurchaseCost;
-                            book.SaleCost = LibraryVM.CurrentBook.SaleCost;
-                            book.Quantity = LibraryVM.CurrentBook.Quantity;
-                            book.Branch = LibraryVM.CurrentBook.Branch;
-                            book.Note = LibraryVM.CurrentBook.Note;
-                            LibraryVM.CurrentBook = new Book();
-                            LibraryVM.btnAddBook.Content = "Add";
-                            LibraryVM.StateBook = 0;
+                            book.Title = BookVM.CurrentBook.Title;
+                            book.AuthorName = BookVM.CurrentBook.AuthorName;
+                            book.PurchaseCost = BookVM.CurrentBook.PurchaseCost;
+                            book.SaleCost = BookVM.CurrentBook.SaleCost;
+                            book.Quantity = BookVM.CurrentBook.Quantity;
+                            book.Branch = BookVM.CurrentBook.Branch;
+                            book.Note = BookVM.CurrentBook.Note;
+                            BookVM.CurrentBook = new Book();
+                            BookVM.btnAddBook.Content = "Add";
+                            BookVM.StateBook = 0;
                             return;
                         }
                     }
                 }
-                LibraryVM.StateBook = 0;
+                BookVM.StateBook = 0;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
+            BookVM.StateBook = value;
         }
     }
 }

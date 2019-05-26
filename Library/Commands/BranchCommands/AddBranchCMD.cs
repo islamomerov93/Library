@@ -9,24 +9,24 @@ namespace Commands.BranchCommands
 {
     public class AddBranchCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        BranchVM BranchVM;
 
-        public AddBranchCMD(LibraryVM LibraryVM)
+        public AddBranchCMD(BranchVM BranchVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BranchVM = BranchVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBranch)
+            if (Convert.ToInt32(parameter) == BranchVM.StateBranch)
             {
-                if (LibraryVM.btnAddBranch.Content.ToString() == "Add")
+                if (BranchVM.btnAddBranch.Content.ToString() == "Add")
                 {
                     try
                     {
-                        var No = LibraryVM.Branches.Count + 1;
-                        LibraryVM.Branches.Add(new Branch(No, LibraryVM.CurrentBranch.Name, LibraryVM.CurrentBranch.Address, LibraryVM.CurrentBranch.Note));
-                        LibraryVM.CurrentBranch = new Branch();
+                        var No = BranchVM.Branches.Count + 1;
+                        BranchVM.Branches.Add(new Branch(No, BranchVM.CurrentBranch.Name, BranchVM.CurrentBranch.Address, BranchVM.CurrentBranch.Note));
+                        BranchVM.CurrentBranch = new Branch();
                     }
                     catch (Exception)
                     {
@@ -36,25 +36,25 @@ namespace Commands.BranchCommands
                 }
                 else
                 {
-                    foreach (var branch in LibraryVM.Branches)
+                    foreach (var branch in BranchVM.Branches)
                     {
-                        if (branch.No == LibraryVM.CurrentBranch.No)
+                        if (branch.No == BranchVM.CurrentBranch.No)
                         {
-                            branch.Name = LibraryVM.CurrentBranch.Name;
-                            branch.Address = LibraryVM.CurrentBranch.Address;
-                            branch.Note = LibraryVM.CurrentBranch.Note;
-                            LibraryVM.CurrentBranch = new Branch();
-                            LibraryVM.btnAddBranch.Content = "Add";
-                            LibraryVM.StateBranch = 0;
+                            branch.Name = BranchVM.CurrentBranch.Name;
+                            branch.Address = BranchVM.CurrentBranch.Address;
+                            branch.Note = BranchVM.CurrentBranch.Note;
+                            BranchVM.CurrentBranch = new Branch();
+                            BranchVM.btnAddBranch.Content = "Add";
+                            BranchVM.StateBranch = 0;
                             return;
                         }
                     }
                 }
-                LibraryVM.StateBranch = 0;
+                BranchVM.StateBranch = 0;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBranch = value;
+            BranchVM.StateBranch = value;
         }
     }
 }

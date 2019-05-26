@@ -18,10 +18,10 @@ namespace Commands.EmployeeCommands
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
-            LibraryVM.Books.Remove(LibraryVM.Books.FirstOrDefault(x=>x.No == LibraryVM.CurrentBook.No));
-            LibraryVM.MyFilteredBooks = new ObservableCollection<Book>(LibraryVM.Books);
-            LibraryVM.CurrentBook = null;
+            LibraryVM.StateEmployee = value;
+            LibraryVM.Employees.Remove(LibraryVM.Employees.FirstOrDefault(x=>x.No == LibraryVM.CurrentEmployee.No));
+            LibraryVM.MyFilteredEmployees = new ObservableCollection<Employee>(LibraryVM.Employees);
+            LibraryVM.CurrentEmployee = null;
         }
     }
 }

@@ -8,20 +8,20 @@ namespace Commands.CustomerCommands
 {
     public class DeleteCustomerCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        CustomerVM CustomerVM;
 
-        public DeleteCustomerCMD(LibraryVM LibraryVM)
+        public DeleteCustomerCMD(CustomerVM CustomerVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.CustomerVM = CustomerVM;
         }
 
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateCustomer = value;
-            LibraryVM.Customers.Remove(LibraryVM.Customers.FirstOrDefault(x => x.No == LibraryVM.CurrentCustomer.No));
-            LibraryVM.MyFilteredCustomers = new ObservableCollection<Customer>(LibraryVM.Customers);
-            LibraryVM.CurrentCustomer = null;
+            CustomerVM.StateCustomer = value;
+            CustomerVM.Customers.Remove(CustomerVM.Customers.FirstOrDefault(x => x.No == CustomerVM.CurrentCustomer.No));
+            CustomerVM.MyFilteredCustomers = new ObservableCollection<Customer>(CustomerVM.Customers);
+            CustomerVM.CurrentCustomer = null;
         }
     }
 }

@@ -5,18 +5,18 @@ namespace Commands.BranchCommands
 {
     public class EditBranchCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public EditBranchCMD(LibraryVM LibraryVM)
+        BranchVM BranchVM;
+        public EditBranchCMD(BranchVM BranchVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BranchVM = BranchVM;
         }
 
         public override void Execute(object parameter)
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateBranch = 1;
-                LibraryVM.btnAddBranch.Content = "Save";
+                BranchVM.StateBranch = 1;
+                BranchVM.btnAddBranch.Content = "Save";
                 return;
             }
         }

@@ -8,25 +8,25 @@ namespace Commands.CustomerCommands
 {
     public class AddCustomerCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        CustomerVM CustomerVM;
 
-        public AddCustomerCMD(LibraryVM LibraryVM)
+        public AddCustomerCMD(CustomerVM CustomerVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.CustomerVM = CustomerVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateCustomer)
+            if (Convert.ToInt32(parameter) == CustomerVM.StateCustomer)
             {
-                if (LibraryVM.btnAddCustomer.Content.ToString() == "Add")
+                if (CustomerVM.btnAddCustomer.Content.ToString() == "Add")
                 {
                     try
                     {
-                        var No = LibraryVM.Customers.Count + 1;
-                        LibraryVM.Customers.Add(new Customer(No, LibraryVM.CurrentCustomer.Name, LibraryVM.CurrentCustomer.Surname,
-                            LibraryVM.CurrentCustomer.PhoneNumber, LibraryVM.CurrentCustomer.JoinedDate, LibraryVM.CurrentCustomer.Note));
-                        LibraryVM.CurrentCustomer = new Customer();
+                        var No = CustomerVM.Customers.Count + 1;
+                        CustomerVM.Customers.Add(new Customer(No, CustomerVM.CurrentCustomer.Name, CustomerVM.CurrentCustomer.Surname,
+                            CustomerVM.CurrentCustomer.PhoneNumber, CustomerVM.CurrentCustomer.JoinedDate, CustomerVM.CurrentCustomer.Note));
+                        CustomerVM.CurrentCustomer = new Customer();
                     }
                     catch (Exception)
                     {
@@ -35,27 +35,27 @@ namespace Commands.CustomerCommands
                 }
                 else
                 {
-                    foreach (var book in LibraryVM.Customers)
+                    foreach (var book in CustomerVM.Customers)
                     {
-                        if (book.No == LibraryVM.CurrentCustomer.No)
+                        if (book.No == CustomerVM.CurrentCustomer.No)
                         {
-                            book.Name = LibraryVM.CurrentCustomer.Name;
-                            book.Surname = LibraryVM.CurrentCustomer.Surname;
-                            book.PhoneNumber = LibraryVM.CurrentCustomer.PhoneNumber;
-                            book.JoinedDate = LibraryVM.CurrentCustomer.JoinedDate;
-                            book.Note = LibraryVM.CurrentCustomer.Note;
-                            LibraryVM.CurrentCustomer = new Customer();
-                            LibraryVM.btnAddCustomer.Content = "Add";
-                            LibraryVM.StateCustomer = 0;
+                            book.Name = CustomerVM.CurrentCustomer.Name;
+                            book.Surname = CustomerVM.CurrentCustomer.Surname;
+                            book.PhoneNumber = CustomerVM.CurrentCustomer.PhoneNumber;
+                            book.JoinedDate = CustomerVM.CurrentCustomer.JoinedDate;
+                            book.Note = CustomerVM.CurrentCustomer.Note;
+                            CustomerVM.CurrentCustomer = new Customer();
+                            CustomerVM.btnAddCustomer.Content = "Add";
+                            CustomerVM.StateCustomer = 0;
                             return;
                         }
                     }
                 }
-                LibraryVM.StateCustomer = 0;
+                CustomerVM.StateCustomer = 0;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateCustomer = value;
+            CustomerVM.StateCustomer = value;
         }
     }
 }

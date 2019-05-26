@@ -13,14 +13,14 @@ namespace Commands.EmployeeCommands
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBook)
+            if (Convert.ToInt32(parameter) == LibraryVM.StateEmployee)
             {
-                LibraryVM.StateBook = 0;
-                LibraryVM.CurrentBook = null;
+                LibraryVM.StateEmployee = 0;
+                LibraryVM.CurrentEmployee = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
+            LibraryVM.StateEmployee = value;
         }
     }
 }

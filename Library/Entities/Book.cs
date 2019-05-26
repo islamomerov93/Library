@@ -41,7 +41,7 @@ namespace Library.Entities
             PurchaseCost = purchaseCost;
             SaleCost = saleCost;
             Quantity = quantity;
-            Branch = branch ?? throw new ArgumentNullException(nameof(branch));
+            Branch = branch; /*?? throw new ArgumentNullException(nameof(branch));*/
             Note = note;
         }
     }

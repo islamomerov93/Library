@@ -5,22 +5,22 @@ namespace Commands.CustomerCommands
 {
     public class RejectCustomerCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public RejectCustomerCMD(LibraryVM LibraryVM)
+        CustomerVM CustomerVM;
+        public RejectCustomerCMD(CustomerVM CustomerVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.CustomerVM = CustomerVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateCustomer)
+            if (Convert.ToInt32(parameter) == CustomerVM.StateCustomer)
             {
-                LibraryVM.StateCustomer = 0;
-                LibraryVM.CurrentCustomer = null;
+                CustomerVM.StateCustomer = 0;
+                CustomerVM.CurrentCustomer = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateCustomer = value;
+            CustomerVM.StateCustomer = value;
         }
     }
 }

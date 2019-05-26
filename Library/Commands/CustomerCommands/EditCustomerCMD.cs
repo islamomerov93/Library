@@ -5,18 +5,18 @@ namespace Commands.CustomerCommands
 {
     public class EditCustomerCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public EditCustomerCMD(LibraryVM LibraryVM)
+        CustomerVM CustomerVM;
+        public EditCustomerCMD(CustomerVM CustomerVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.CustomerVM = CustomerVM;
         }
 
         public override void Execute(object parameter)
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateCustomer = 1;
-                LibraryVM.btnAddCustomer.Content = "Save";
+                CustomerVM.StateCustomer = 1;
+                CustomerVM.btnAddCustomer.Content = "Save";
                 return;
             }
         }

@@ -64,6 +64,7 @@
     <Compile Include="Commands\BranchCommands\DeleteBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\EditBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\RejectBranchCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddBookUCCMD.cs" />
     <Compile Include="Commands\CustomerCommands\AddCustomerCMD.cs" />
     <Compile Include="Commands\CustomerCommands\DeleteCustomerCMD.cs" />
     <Compile Include="Commands\CustomerCommands\EditCustomerCMD.cs" />
@@ -72,6 +73,9 @@
     <Compile Include="Commands\EmployeeCommands\DeleteEmployeeCMD.cs" />
     <Compile Include="Commands\EmployeeCommands\EditEmployeeCMD.cs" />
     <Compile Include="Commands\EmployeeCommands\RejectEmployeeCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddBranchUCCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddCustomerUCCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddEmployeeUCCMD.cs" />
     <Compile Include="Entities\BaseUser.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Branch.cs" />
@@ -80,7 +84,23 @@
     <Compile Include="Models\Book_StatusModel.cs" />
     <Compile Include="ViewModels\BaseVM.cs" />
     <Compile Include="Models\BookRentOrSaleVM.cs" />
+    <Compile Include="ViewModels\BookVM.cs" />
+    <Compile Include="ViewModels\BranchVM.cs" />
+    <Compile Include="ViewModels\CustomerVM.cs" />
+    <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\LibraryVM.cs" />
+    <Compile Include="Views\UserControls\BookUC.xaml.cs">
+      <DependentUpon>BookUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\BranchUC.xaml.cs">
+      <DependentUpon>BranchUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CustomerUC.xaml.cs">
+      <DependentUpon>CustomerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\EmployeeUC.xaml.cs">
+      <DependentUpon>EmployeeUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +113,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserControls\BookUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\BranchUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CustomerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\EmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -112,6 +148,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

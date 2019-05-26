@@ -15,7 +15,7 @@ namespace Commands.EmployeeCommands
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateBook = 1;
+                LibraryVM.StateEmployee = 1;
                 return;
             }
         }

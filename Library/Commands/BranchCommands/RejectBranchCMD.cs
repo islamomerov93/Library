@@ -5,22 +5,22 @@ namespace Commands.BranchCommands
 {
     public class RejectBranchCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public RejectBranchCMD(LibraryVM LibraryVM)
+        BranchVM BranchVM;
+        public RejectBranchCMD(BranchVM BranchVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BranchVM = BranchVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateBranch)
+            if (Convert.ToInt32(parameter) == BranchVM.StateBranch)
             {
-                LibraryVM.StateBranch = 0;
-                LibraryVM.CurrentBranch = null;
+                BranchVM.StateBranch = 0;
+                BranchVM.CurrentBranch = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBranch = value;
+            BranchVM.StateBranch = value;
         }
     }
 }

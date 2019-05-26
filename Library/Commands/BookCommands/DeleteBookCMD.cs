@@ -8,20 +8,20 @@ namespace Commands.BookCommands
 {
     public class DeleteBookCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        BookVM BookVM;
 
-        public DeleteBookCMD(LibraryVM LibraryVM)
+        public DeleteBookCMD(BookVM BookVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BookVM = BookVM;
         }
 
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBook = value;
-            LibraryVM.Books.Remove(LibraryVM.Books.FirstOrDefault(x=>x.No == LibraryVM.CurrentBook.No));
-            LibraryVM.MyFilteredBooks = new ObservableCollection<Book>(LibraryVM.Books);
-            LibraryVM.CurrentBook = null;
+            BookVM.StateBook = value;
+            BookVM.Books.Remove(BookVM.Books.FirstOrDefault(x=>x.No == BookVM.CurrentBook.No));
+            BookVM.MyFilteredBooks = new ObservableCollection<Book>(BookVM.Books);
+            BookVM.CurrentBook = null;
         }
     }
 }

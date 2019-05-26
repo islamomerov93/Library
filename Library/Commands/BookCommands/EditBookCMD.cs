@@ -5,18 +5,18 @@ namespace Commands.BookCommands
 {
     public class EditBookCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public EditBookCMD(LibraryVM LibraryVM)
+        BookVM BookVM;
+        public EditBookCMD(BookVM BookVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BookVM = BookVM;
         }
 
         public override void Execute(object parameter)
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateBook = 1;
-                LibraryVM.btnAddBook.Content = "Save";
+                BookVM.StateBook = 1;
+                BookVM.btnAddBook.Content = "Save";
                 return;
             }
         }

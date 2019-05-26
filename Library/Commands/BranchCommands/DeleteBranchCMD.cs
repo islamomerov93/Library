@@ -8,20 +8,20 @@ namespace Commands.BranchCommands
 {
     public class DeleteBranchCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        BranchVM BranchVM;
 
-        public DeleteBranchCMD(LibraryVM LibraryVM)
+        public DeleteBranchCMD(BranchVM BranchVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.BranchVM = BranchVM;
         }
 
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateBranch = value;
-            LibraryVM.Branches.Remove(LibraryVM.Branches.FirstOrDefault(x => x.No == LibraryVM.CurrentBranch.No));
-            LibraryVM.MyFilteredBranches = new ObservableCollection<Branch>(LibraryVM.Branches);
-            LibraryVM.CurrentBranch = null;
+            BranchVM.StateBranch = value;
+            BranchVM.Branches.Remove(BranchVM.Branches.FirstOrDefault(x => x.No == BranchVM.CurrentBranch.No));
+            BranchVM.MyFilteredBranches = new ObservableCollection<Branch>(BranchVM.Branches);
+            BranchVM.CurrentBranch = null;
         }
     }
 }
