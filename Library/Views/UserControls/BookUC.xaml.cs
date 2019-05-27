@@ -33,7 +33,7 @@ namespace Library.Views.UserControls
         }
         void closeButton_Click(object sender, RoutedEventArgs e)
         {
-            LibraryVM.Grid.Children.Clear();
+            LibraryVM.Grid.Children.Remove(this);
         }
     }
 }
