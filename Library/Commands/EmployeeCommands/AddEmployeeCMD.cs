@@ -24,7 +24,7 @@ namespace Commands.EmployeeCommands
                     try
                     {
                         var No = LibraryVM.Employees.Count + 1;
-                        LibraryVM.Employees.Add(new Employee(No, LibraryVM.CurrentEmployee.Name, LibraryVM.CurrentEmployee.Surname,
+                        LibraryVM.Employees.Add(new Employee(LibraryVM.CurrentEmployee.Id, No, LibraryVM.CurrentEmployee.Name, LibraryVM.CurrentEmployee.Surname,
                             LibraryVM.CurrentEmployee.PhoneNumber, LibraryVM.CurrentEmployee.Branch, 
                             LibraryVM.CurrentEmployee.Salary, LibraryVM.CurrentEmployee.Note));
                         LibraryVM.CurrentEmployee = new Employee();

@@ -69,13 +69,14 @@ namespace Library.ViewModels
             set { currentEmployee = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurrentEmployee))); }
         }
         #endregion
-
+        public AddBookSaleUCCMD AddBookSaleUC { get; set; }
         public AddBookUCCMD AddBookUC { get; set; }
         public AddEmployeeUCCMD AddEmployeeUC { get; set; }
         public AddCustomerUCCMD AddCustomerUC { get; set; }
         public AddBranchUCCMD AddBranchUC { get; set; }
         public LibraryVM()
         {
+            AddBookSaleUC = new AddBookSaleUCCMD(this);
             AddBookUC = new AddBookUCCMD(this);
             AddEmployeeUC = new AddEmployeeUCCMD(this);
             AddCustomerUC = new AddCustomerUCCMD(this);

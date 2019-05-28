@@ -7,17 +7,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#1A6368" Margin="10,45,10,10" CornerRadius="10">
-            <Border Background="DarkGray" BorderThickness="5" BorderBrush="#1A6368" Margin="5" CornerRadius="10">
-                <Grid  Background="#1C7589">
+        <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" Margin="10,45,10,10" CornerRadius="10">
+            <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
+                <Grid  Background="#FF313131">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel>
-                    <Border Background="DarkGray" BorderThickness="3">
-                            <TextBlock Height="25" FontSize="18" Background="#0A5D70" TextAlignment="Center" FontWeight="SemiBold">Branches</TextBlock>
-                    </Border>
+                        <Grid Background="#FF313131">
+                            <TextBlock Height="25" FontSize="18" Background="#FF313131" TextAlignment="Center" FontWeight="SemiBold">Branches</TextBlock>
+                            <Button Name="CloseButton" FontSize="17" FontWeight="UltraBold" Click="closeButton_Click" HorizontalAlignment="Right">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Content" Value="  X  "/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="10" Background="OrangeRed" BorderBrush="#ccc" BorderThickness="1,1,1,1" >
+                                                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
                         <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -81,13 +97,13 @@
                         <StackPanel Grid.Column="4">
                             <Button x:Name="btnAddBranch" Height="30" Margin="4 4" Command="{Binding AddBranch}" CommandParameter="1">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Add"/>
                                         <Setter Property="IsEnabled" Value="False"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -100,7 +116,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -123,12 +139,12 @@
                             </Button>
                             <Button Height="30" Margin="4 4" Command="{Binding EditBranch}" CommandParameter="2">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                         <Style TargetType="{x:Type Button}">
                                             <Setter Property="IsEnabled" Value="True"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -141,7 +157,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -165,13 +181,13 @@
                             </Button>
                             <Button Height="30" Margin="4 4" Command="{Binding RejectBranch}" CommandParameter="1">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Reject"/>
                                         <Setter Property="IsEnabled" Value="False"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -184,7 +200,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -207,13 +223,13 @@
                             </Button>
                             <Button Height="30" Margin="4 4 4 4" Command="{Binding DeleteBranch}" CommandParameter="4">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Delete"/>
                                         <Setter Property="IsEnabled" Value="True"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -226,7 +242,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -248,7 +264,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                    <ListView x:Name="MainListBranch" Background="#7FE7FF" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredBranches}" 
+                    <ListView x:Name="MainListBranch" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredBranches}" 
                       SelectedItem="{Binding SelectedBranch,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       FontWeight="SemiBold" Margin="0 5 0 0" FontFamily="Times New Roman" BorderBrush="#FFF2F4F9">
                     <ListView.ItemContainerStyle>

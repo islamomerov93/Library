@@ -2,23 +2,40 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Library.Views.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#1A6368" Margin="10,45,10,10" CornerRadius="10">
-            <Border Background="DarkGray" BorderThickness="5" BorderBrush="#1A6368" Margin="5" CornerRadius="10">
+        <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" Margin="10,45,10,10" CornerRadius="10">
+            <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
                 <Grid Background="#1C7589">
                 <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel>
-                    <Border Background="DarkGray" BorderThickness="3">
-                            <TextBlock Height="25" FontSize="18" Background="#0A5D70" TextAlignment="Center" FontWeight="SemiBold">Customers</TextBlock>
-                    </Border>
-                        <Grid Background="#1C7589">
+                    <Grid Background="DarkGray">
+                            <TextBlock Height="25" FontSize="18" Background="#FF313131" TextAlignment="Center" FontWeight="SemiBold">Customers</TextBlock>
+                            <Button Name="CloseButton" FontSize="17" FontWeight="UltraBold" Click="closeButton_Click" HorizontalAlignment="Right">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Content" Value="  X  "/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="10" Background="OrangeRed" BorderBrush="#ccc" BorderThickness="1,1,1,1" >
+                                                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </Grid>
+                        <Grid Background="#FF313131">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -77,15 +94,16 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="3">
-                            <DatePicker FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.JoinedDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                            <DatePicker x:Name="DP" FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.JoinedDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
                                 <DatePicker.Style>
-                                    <Style TargetType="{x:Type DatePicker}">
-                                        <Setter Property="IsEnabled" Value="False"/>
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
-                                                <Setter Property="IsEnabled" Value="True"/>
-                                            </DataTrigger>
-                                        </Style.Triggers>
+                                        <Style TargetType="{x:Type DatePicker}">
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                    <Setter Property="IsEnabled" Value="True"/>
+                                                    <Setter Property="SelectedDate" Value="{x:Static sys:DateTime.Now}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
                                     </Style>
                                 </DatePicker.Style>
                             </DatePicker>
@@ -107,13 +125,13 @@
                         <StackPanel Grid.Column="4">
                             <Button x:Name="btnAddCustomer" Height="30" Margin="4 4" Command="{Binding AddCustomer}" CommandParameter="1">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Add"/>
                                         <Setter Property="IsEnabled" Value="False"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -149,13 +167,13 @@
                             </Button>
                             <Button Height="30" Margin="4 4" Command="{Binding EditCustomer}" CommandParameter="2">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Edit"/>
                                         <Setter Property="IsEnabled" Value="True"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -192,13 +210,13 @@
                             </Button>
                             <Button Height="30" Margin="4 4" Command="{Binding RejectCustomer}" CommandParameter="1">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Reject"/>
                                         <Setter Property="IsEnabled" Value="False"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -234,13 +252,13 @@
                             </Button>
                             <Button Height="30" Margin="4 4" Command="{Binding DeleteCustomer}" CommandParameter="4">
                                 <Button.BitmapEffect>
-                                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
-                                </Button.BitmapEffect>
+                                        <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                                    </Button.BitmapEffect>
                                 <Button.Style>
                                     <Style TargetType="{x:Type Button}">
                                         <Setter Property="Content" Value="Delete"/>
                                         <Setter Property="IsEnabled" Value="True"/>
-                                            <Setter Property="Background" Value="Cyan"/>
+                                            <Setter Property="Background" Value="#FF565656"/>
                                             <Setter Property="Template">
                                                 <Setter.Value>
                                                     <ControlTemplate TargetType="{x:Type Button}">
@@ -275,7 +293,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                    <ListView x:Name="MainListCustomer" Background="#7FE7FF" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredCustomers}" 
+                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredCustomers}" 
                       SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       FontWeight="DemiBold" Margin="0 5 0 0 ">
                     <ListView.ItemContainerStyle>

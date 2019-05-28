@@ -36,26 +36,34 @@
     </Window.Resources>
     
     <Border Padding="2" BorderThickness="5" BorderBrush="Black" Background="#111F26" Margin="0" CornerRadius="20">
-        <Border Padding="1" BorderThickness="1" BorderBrush="OrangeRed" Background="#111F26" Margin="0" CornerRadius="20">
+        <Border Padding="1" BorderThickness="1" BorderBrush="OrangeRed" Background="#FF313131" Margin="0" CornerRadius="20">
             <Grid>
                 <Label Height="40" Background="#01000000" VerticalAlignment="Top" MouseLeftButtonDown="DragWindow" MouseDoubleClick="Double_Click"/>
                 <Grid x:Name="MainGrid">
-                    <TextBlock Height="65" Width="765" FontSize="60" Margin="100 0 100 440" Background="WhiteSmoke" Foreground="Black">WELLCOME TO E-LIBRARY</TextBlock>
-                    <Image gif:ImageBehavior.AnimatedSource="/Images/MainBook.gif" Margin="30" Opacity="0.7"/>
+                    <TextBlock Height="65" Width="345" FontSize="60" Margin="100 70 100 440" Background="Transparent" Foreground="Black">L I B R A R Y</TextBlock>
+                    <Image gif:ImageBehavior.AnimatedSource="/Images/MainBook.gif" Margin="30 50 30 15" Opacity="0.8" VerticalAlignment="Bottom">
+                        <Image.Effect>
+                            <DropShadowEffect Color="Black" Direction="33333" ShadowDepth="18" Opacity="0.9" />
+                        </Image.Effect>
+                    </Image>
                 </Grid>
                 <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-209,0,0,0" Grid.RowSpan="2">
-                    <Border BorderBrush="#1D66CB" BorderThickness="2" Width="200" Background="#1C7589" CornerRadius="017,20,20,20" Opacity="0.9">
+                    <Border BorderBrush="OrangeRed" BorderThickness="2" Width="200" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
                         <StackPanel>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookUC}">BOOKS</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddCustomerUC}">CUSTOMERS</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}">EMPLOYEES</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}">BRANCHES</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}">BOOK SALES</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="17" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}">BOOK SALES REPORTS</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}">RENTAL REPORTS</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddUserUC}">USERS</Button>
                         </StackPanel>
                     </Border>
                     <Grid>
-                        <Button Name="btnLeftMenuHide" Width="40" Height="40" Click="btnLeftMenuHide_Click" Visibility="Hidden" VerticalAlignment="Top" Margin="3,0,0,0">
+                        <Button Name="btnLeftMenuHide" Width="40" Height="40" Click="btnLeftMenuHide_Click" Visibility="Hidden" VerticalAlignment="Top" Margin="15,5,0,0">
                             <StackPanel>
-                                <Image Source="/Images/Menu.png" />
+                                <Image Source="/Images/CloseMenu.png" Margin="1"/>
                             </StackPanel>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
@@ -63,23 +71,23 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="100">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5"/>
                                                 </Border>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="OrangeRed"/>
+                                            <Setter Property="Background" Value="LightGray"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Name="btnLeftMenuShow" Width="40" Height="40" Click="btnLeftMenuShow_Click" VerticalAlignment="Top" Margin="10,5,0,0">
+                        <Button Name="btnLeftMenuShow" Width="40" Height="40" Click="btnLeftMenuShow_Click" VerticalAlignment="Top" Margin="15,5,0,0">
                             <StackPanel>
-                                <Image Source="/Images/Menu.png"/>
+                                <Image Source="/Images/OpenMenu.png" Margin="1"/>
                             </StackPanel>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
@@ -87,7 +95,7 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="100">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>
@@ -95,7 +103,7 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="OrangeRed"/>
+                                            <Setter Property="Background" Value="LightGray"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
@@ -104,72 +112,58 @@
                     </Grid>
                 </StackPanel>
                 <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="343,-80,342.6,0">
-                <Border BorderBrush="#1D66CB" BorderThickness="2" Height="70" Background="#1C7589" Opacity="0.9" CornerRadius="0,0,20,20">
+                    <Border BorderBrush="OrangeRed" BorderThickness="2" Height="70" Background="#FF373B3C" Opacity="0.9" CornerRadius="0,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel>
-                            <TextBlock Background="Cyan" Width="70" TextAlignment="Right" Margin="10 10 0 10" HorizontalAlignment="Right" FontWeight="SemiBold">Name   :</TextBlock>
-                            <TextBlock Background="Cyan" Width="70" TextAlignment="Right" Margin="10,0,0,10" HorizontalAlignment="Right" FontWeight="SemiBold">Surname  :</TextBlock>
+                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 10 0 10" HorizontalAlignment="Right" FontWeight="SemiBold">Name   :</TextBlock>
+                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10,0,0,10" HorizontalAlignment="Right" FontWeight="SemiBold">Surname  :</TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                                <TextBlock Background="Cyan" Width="100" TextAlignment="Center" Margin="1 10 10 10" HorizontalAlignment="Left" Text="{Binding User.Name}" Grid.Column="1" FontWeight="SemiBold"/>
-                                <TextBlock Background="Cyan" Width="100" TextAlignment="Center" Margin="1 0 10 10" HorizontalAlignment="Left" Text="{Binding User.Surname}" Grid.Column="1" FontWeight="SemiBold"/>
+                                <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 10 10 10" HorizontalAlignment="Left" Text="{Binding User.Name}" Grid.Column="1" FontWeight="SemiBold"/>
+                                <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 0 10 10" HorizontalAlignment="Left" Text="{Binding User.Surname}" Grid.Column="1" FontWeight="SemiBold"/>
                         </StackPanel>
                     </Grid>
                 </Border>
                 <Grid>
-                    <Button Name="btnTopMenuHide" Width="40" Height="40" Click="btnTopMenuHide_Click" Visibility="Hidden" Background="Transparent" BorderThickness="0,0,0,1" BorderBrush="#1D66CB">
+                    <Button Name="btnTopMenuHide" Width="40" Height="40" Click="btnTopMenuHide_Click" Visibility="Hidden" Background="Transparent" BorderThickness="0,10,0,1" BorderBrush="#1D66CB">
                         <StackPanel>
-                            <Image Source="/Images/User.png"/>
+                            <Image Source="/Images/CloseUser.png" Margin="5"/>
                         </StackPanel>
-                    </Button>
-                    <Button Name="btnTopMenuShow" Width="40" Height="40" Click="btnTopMenuShow_Click" Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#1D66CB" Margin="0,5,0,0">
-                        <StackPanel>
-                            <Image Source="/Images/User.png" />
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </StackPanel> 
-                <StackPanel Panel.ZIndex="2" Name="pnlRightMenu" Orientation="Horizontal" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,-108,0">
-                    <Grid>
-                        <Button Name="btnRightMenuHide" Width="40" Height="40" Click="btnRightMenuHide_Click" Visibility="Hidden" Margin="0,0,3,0">
-                            <StackPanel>
-                                <Image Source="/Images/Close.png" />
-                            </StackPanel>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="Transparent"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="100">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5"/>
                                                 </Border>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="OrangeRed"/>
+                                            <Setter Property="Background" Value="LightGray"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
-                        <Button Name="btnRightMenuShow" Width="40" Height="40" Click="btnRightMenuShow_Click" VerticalAlignment="Top" Margin="0,5,10,0">
-                            <StackPanel>
-                                <Image Source="/Images/Close.png" />
-                            </StackPanel>
+                    <Button Name="btnTopMenuShow" Width="40" Height="40" Click="btnTopMenuShow_Click" Background="Transparent" BorderThickness="0,1,0,0" BorderBrush="#1D66CB" Margin="0,10,0,0">
+                        <StackPanel>
+                            <Image Source="/Images/OpenUser.png" Margin="5"/>
+                        </StackPanel>
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="Transparent"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
-                                                <Border Background="{TemplateBinding Background}" CornerRadius="100">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                                 </Border>
                                             </ControlTemplate>
@@ -177,21 +171,73 @@
                                     </Setter>
                                     <Style.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" Value="OrangeRed"/>
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                </Grid>
+            </StackPanel> 
+                <StackPanel Panel.ZIndex="2" Name="pnlRightMenu" Orientation="Horizontal" Height="50" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,-108,0">
+                    <Grid>
+                        <Button Name="btnRightMenuHide" Width="40" Height="40" Click="btnRightMenuHide_Click" Visibility="Hidden" Margin="0,8,15,0">
+                            <StackPanel>
+                                <Image Source="/Images/CloseBtn.png" Margin="5"/>
+                            </StackPanel>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                        <Button Name="btnRightMenuShow" Width="40" Height="40" Click="btnRightMenuShow_Click" VerticalAlignment="Top" Margin="0,8,15,0">
+                            <StackPanel>
+                                <Image Source="/Images/CloseBtn.png" Margin="7"/>
+                            </StackPanel>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGray"/>
                                         </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Button.Style>
                         </Button>
                     </Grid>
-                    <Border BorderBrush="#1D66CB" BorderThickness="1" Width="95" Background="Transparent"  Margin="0,5,3,5" Opacity="0.5" CornerRadius="20,20,20,0">
+                    <Border BorderBrush="OrangeRed" BorderThickness="1" Width="95" Background="#FF373B3C"  Margin="0,5,3,5" Opacity="0.8" CornerRadius="20,20,20,0">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
-                            <TextBlock x:Name="tbTime" Foreground="White" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">00:00:03</TextBlock>
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
+                            <TextBlock x:Name="tbTime" Foreground="Black" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">00:00:03</TextBlock>
                         </Grid> 
                     </Border>
                 </StackPanel>

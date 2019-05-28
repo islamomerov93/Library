@@ -49,10 +49,11 @@ namespace Library.ViewModels
         {
             get
             {
-                if (SearchText == null) return customers;
-                return new ObservableCollection<Customer>(customers.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) ||
-                x.Surname.ToLower().Contains(SearchText.ToLower()) ||
-                x.PhoneNumber.ToLower().Contains(SearchText.ToLower())).ToList());
+                //if (SearchText == null)
+                    return customers;
+                //return new ObservableCollection<Customer>(customers.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) ||
+                //x.Surname.ToLower().Contains(SearchText.ToLower()) ||
+                //x.PhoneNumber.ToLower().Contains(SearchText.ToLower())).ToList());
             }
             set { myFilteredCustomers = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredCustomers))); }
         }

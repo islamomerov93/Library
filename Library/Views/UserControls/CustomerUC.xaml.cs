@@ -29,19 +29,23 @@ namespace Library.Views.UserControls
             InitializeComponent();
             CustomerVM = new CustomerVM();
 
-            ObservableCollection<Customer> Customers = new ObservableCollection<Customer>();
-            Customer customer1 = new Customer(CustomerVM.NoCustomer++, "Islam", "Omerov", "050-586-67-18", DateTime.Now, "");
-            Customer customer2 = new Customer(CustomerVM.NoCustomer++, "Saleh", "Aghabeyli", "050-586-67-18", DateTime.Now, "");
-            Customer customer3 = new Customer(CustomerVM.NoCustomer++, "Tural", "Mustafayev", "050-586-67-18", DateTime.Now, "");
-            Customer customer4 = new Customer(CustomerVM.NoCustomer++, "Cavid", "Eliyev", "050-586-67-18", DateTime.Now, "");
-            Customers.Add(customer1);
-            Customers.Add(customer2);
-            Customers.Add(customer3);
-            Customers.Add(customer4);
-            CustomerVM.Customers = Customers;
-            CustomerVM.btnAddCustomer = btnAddCustomer;
+            //ObservableCollection<Customer> Customers = new ObservableCollection<Customer>();
+            //Customer customer1 = new Customer(CustomerVM.NoCustomer++, "Islam", "Omerov", "050-586-67-18", DateTime.Now, "");
+            //Customer customer2 = new Customer(CustomerVM.NoCustomer++, "Saleh", "Aghabeyli", "050-586-67-18", DateTime.Now, "");
+            //Customer customer3 = new Customer(CustomerVM.NoCustomer++, "Tural", "Mustafayev", "050-586-67-18", DateTime.Now, "");
+            //Customer customer4 = new Customer(CustomerVM.NoCustomer++, "Cavid", "Eliyev", "050-586-67-18", DateTime.Now, "");
+            //Customers.Add(customer1);
+            //Customers.Add(customer2);
+            //Customers.Add(customer3);
+            //Customers.Add(customer4);
+            //CustomerVM.Customers = Customers;
+            //CustomerVM.btnAddCustomer = btnAddCustomer;
 
             DataContext = CustomerVM;
+        }
+        void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            LibraryVM.Grid.Children.Remove(this);
         }
     }
 }

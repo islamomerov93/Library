@@ -1,5 +1,4 @@
-﻿using Library.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,17 +16,13 @@ using System.Windows.Shapes;
 namespace Library.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for BranchUC.xaml
+    /// Interaction logic for UserUC.xaml
     /// </summary>
-    public partial class BranchUC : UserControl
+    public partial class UserUC : UserControl
     {
-        public BranchUC()
+        public UserUC()
         {
             InitializeComponent();
-        }
-        void closeButton_Click(object sender, RoutedEventArgs e)
-        {
-            LibraryVM.Grid.Children.Remove(this);
         }
     }
 }

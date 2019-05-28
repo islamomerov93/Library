@@ -67,6 +67,7 @@
     <Compile Include="Commands\BranchCommands\DeleteBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\EditBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\RejectBranchCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddBookSaleUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddBookUCCMD.cs" />
     <Compile Include="Commands\CustomerCommands\AddCustomerCMD.cs" />
     <Compile Include="Commands\CustomerCommands\DeleteCustomerCMD.cs" />
@@ -79,11 +80,15 @@
     <Compile Include="Commands\UCAddingCommands\AddBranchUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddCustomerUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddEmployeeUCCMD.cs" />
-    <Compile Include="Entities\BaseUser.cs" />
-    <Compile Include="Entities\Book.cs" />
-    <Compile Include="Entities\Branch.cs" />
-    <Compile Include="Entities\Customer.cs" />
-    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Domain\Abstractions\BaseUser.cs" />
+    <Compile Include="Domain\Abstractions\IUnitOfWork.cs" />
+    <Compile Include="Domain\Entities\Book.cs" />
+    <Compile Include="Domain\Entities\Branch.cs" />
+    <Compile Include="Domain\Entities\Customer.cs" />
+    <Compile Include="Domain\Entities\Employee.cs" />
+    <Compile Include="Domain\Entities\Permissions.cs" />
+    <Compile Include="Domain\Entities\User.cs" />
+    <Compile Include="Domain\Entities\UserInfo.cs" />
     <Compile Include="Models\Book_StatusModel.cs" />
     <Compile Include="ViewModels\BaseVM.cs" />
     <Compile Include="Models\BookRentOrSaleVM.cs" />
@@ -92,6 +97,12 @@
     <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\LibraryVM.cs" />
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\BookSalesUC.xaml.cs">
+      <DependentUpon>BookSalesUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\BookUC.xaml.cs">
       <DependentUpon>BookUC.xaml</DependentUpon>
     </Compile>
@@ -104,6 +115,13 @@
     <Compile Include="Views\UserControls\EmployeeUC.xaml.cs">
       <DependentUpon>EmployeeUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\UserUC.xaml.cs">
+      <DependentUpon>UserUC.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,6 +134,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserControls\BookSalesUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\BookUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\EmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\UserUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,18 +187,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\book.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Close.png" />
-    <Resource Include="Images\Menu.png" />
-    <Resource Include="Images\User.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\MainIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\MainBook.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CloseMenu.png" />
+    <Resource Include="Images\CloseUser.png" />
+    <Resource Include="Images\OpenMenu.png" />
+    <Resource Include="Images\OpenUser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\CloseBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\checked.png" />
+    <Resource Include="Images\hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
