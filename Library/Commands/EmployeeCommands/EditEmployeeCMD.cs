@@ -5,17 +5,17 @@ namespace Commands.EmployeeCommands
 {
     public class EditEmployeeCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public EditEmployeeCMD(LibraryVM LibraryVM)
+        EmployeeVM EmployeeVM;
+        public EditEmployeeCMD(EmployeeVM EmployeeVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.EmployeeVM = EmployeeVM;
         }
 
         public override void Execute(object parameter)
         {
             if (Convert.ToInt32(parameter) == 2)
             {
-                LibraryVM.StateEmployee = 1;
+                EmployeeVM.StateEmployee = 1;
                 return;
             }
         }

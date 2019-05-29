@@ -8,20 +8,20 @@ namespace Commands.EmployeeCommands
 {
     public class DeleteEmployeeCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        EmployeeVM EmployeeVM;
 
-        public DeleteEmployeeCMD(LibraryVM LibraryVM)
+        public DeleteEmployeeCMD(EmployeeVM EmployeeVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.EmployeeVM = EmployeeVM;
         }
 
         public override void Execute(object parameter)
         {
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateEmployee = value;
-            LibraryVM.Employees.Remove(LibraryVM.Employees.FirstOrDefault(x=>x.No == LibraryVM.CurrentEmployee.No));
-            LibraryVM.MyFilteredEmployees = new ObservableCollection<Employee>(LibraryVM.Employees);
-            LibraryVM.CurrentEmployee = null;
+            EmployeeVM.StateEmployee = value;
+            EmployeeVM.Employees.Remove(EmployeeVM.Employees.FirstOrDefault(x=>x.No == EmployeeVM.CurrentEmployee.No));
+            EmployeeVM.MyFilteredEmployees = new ObservableCollection<Employee>(EmployeeVM.Employees);
+            EmployeeVM.CurrentEmployee = null;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Library.Models
 {
     public class Book_StatusModel
     {
-        public Book book { get; set; }
+        public int BookId { get; set; }
         public string Status { get; set; }
     }
 }

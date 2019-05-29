@@ -8,10 +8,11 @@ namespace Library.Domain.Entities
 {
     public class Permissions
     {
-        public bool CanCreateBook { get; set; }
-        public bool CanCreateUser { get; set; }
-        public bool CanCreateBranch { get; set; }
-        public bool CanCreateCustomer { get; set; }
-        public bool CanRent { get; set; }
+        public bool CanAddBook { get; set; }
+        public bool CanAddUser { get; set; }
+        public bool CanAddBranch { get; set; }
+        public bool CanAddCustomer { get; set; }
+        public bool CanAddEmployee { get; set; }
+        public bool CanRentSale { get; set; }
     }
 }

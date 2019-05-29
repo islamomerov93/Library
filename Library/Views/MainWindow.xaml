@@ -4,7 +4,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-          xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
         Height="650" Width="1000" 
@@ -14,10 +14,10 @@
         Background="Transparent">
     <Window.Resources>
         <Storyboard x:Key="sbShowLeftMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-209,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.5" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="-259,0,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.5" />
         </Storyboard>
         <Storyboard x:Key="sbHideLeftMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-209,0,0,0" AccelerationRatio=".9" Duration="0:0:0.3" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="-259,0,0,0" AccelerationRatio=".9" Duration="0:0:0.3" />
         </Storyboard>
 
         <Storyboard x:Key="sbShowTopMenu" >
@@ -47,17 +47,17 @@
                         </Image.Effect>
                     </Image>
                 </Grid>
-                <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-209,0,0,0" Grid.RowSpan="2">
-                    <Border BorderBrush="OrangeRed" BorderThickness="2" Width="200" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
+                <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-259,0,0,0" Grid.RowSpan="2">
+                    <Border BorderBrush="OrangeRed" BorderThickness="2" Width="250" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
                         <StackPanel>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookUC}">BOOKS</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddCustomerUC}">CUSTOMERS</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}">EMPLOYEES</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}">BRANCHES</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}">BOOK SALES</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="17" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}">BOOK SALES REPORTS</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}">RENTAL REPORTS</Button>
                             <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddUserUC}">USERS</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}">BRANCHES</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}">BOOK SALE / Rent</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}">SALES REPORTS</Button>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}">RENTAL REPORTS</Button>
                         </StackPanel>
                     </Border>
                     <Grid>

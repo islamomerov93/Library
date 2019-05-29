@@ -21,7 +21,7 @@ namespace Library
         DispatcherTimer _timer2;
         TimeSpan _time2;
 
-        new object objectNew;
+        object objectNew;
         public MainWindow()
         {
             InitializeComponent();

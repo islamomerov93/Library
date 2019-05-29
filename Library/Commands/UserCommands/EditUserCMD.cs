@@ -1,4 +1,6 @@
-﻿using Library.ViewModels;
+﻿using Library.Domain.Entities;
+using Library.ViewModels;
+using Library.Views.UserControls;
 using System;
 
 namespace Commands.UserCommands

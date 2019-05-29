@@ -10,7 +10,7 @@
     <Grid>
         <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" Margin="10,45,10,10" CornerRadius="10">
             <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
-                <Grid Background="#1C7589">
+                <Grid Background="#FF313131">
                 <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>

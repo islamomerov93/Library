@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -80,6 +81,11 @@
     <Compile Include="Commands\UCAddingCommands\AddBranchUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddCustomerUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddEmployeeUCCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddUserUCCMD.cs" />
+    <Compile Include="Commands\UserCommands\AddUserCMD.cs" />
+    <Compile Include="Commands\UserCommands\DeleteUserCMD.cs" />
+    <Compile Include="Commands\UserCommands\EditUserCMD.cs" />
+    <Compile Include="Commands\UserCommands\RejectUserCMD.cs" />
     <Compile Include="Domain\Abstractions\BaseUser.cs" />
     <Compile Include="Domain\Abstractions\IUnitOfWork.cs" />
     <Compile Include="Domain\Entities\Book.cs" />
@@ -92,11 +98,13 @@
     <Compile Include="Models\Book_StatusModel.cs" />
     <Compile Include="ViewModels\BaseVM.cs" />
     <Compile Include="Models\BookRentOrSaleVM.cs" />
+    <Compile Include="ViewModels\BookSaleVM.cs" />
     <Compile Include="ViewModels\BookVM.cs" />
     <Compile Include="ViewModels\BranchVM.cs" />
     <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\LibraryVM.cs" />
+    <Compile Include="ViewModels\UserVM.cs" />
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -114,6 +122,9 @@
     </Compile>
     <Compile Include="Views\UserControls\EmployeeUC.xaml.cs">
       <DependentUpon>EmployeeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SalesReportsUC.xaml.cs">
+      <DependentUpon>SalesReportsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\UserUC.xaml.cs">
       <DependentUpon>UserUC.xaml</DependentUpon>
@@ -151,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserControls\EmployeeUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SalesReportsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

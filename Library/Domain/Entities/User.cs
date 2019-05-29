@@ -15,6 +15,10 @@ namespace Library.Domain.Entities
         public int Password { get; set; }
         public Permissions Permissions { get; set; }
 
+        public User()
+        {
+        }
+
         public User(int id, int no, string username, int password, Permissions permissions)
         {
             Username = username;

@@ -8,26 +8,26 @@ namespace Commands.EmployeeCommands
 {
     public class AddEmployeeCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
+        EmployeeVM EmployeeVM;
 
-        public AddEmployeeCMD(LibraryVM LibraryVM)
+        public AddEmployeeCMD(EmployeeVM EmployeeVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.EmployeeVM = EmployeeVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateEmployee)
+            if (Convert.ToInt32(parameter) == EmployeeVM.StateEmployee)
             {
-                if (LibraryVM.btnAddEmployee.Content.ToString() == "Add")
+                if (EmployeeVM.btnAddEmployee.Content.ToString() == "Add")
                 {
                     try
                     {
-                        var No = LibraryVM.Employees.Count + 1;
-                        LibraryVM.Employees.Add(new Employee(LibraryVM.CurrentEmployee.Id, No, LibraryVM.CurrentEmployee.Name, LibraryVM.CurrentEmployee.Surname,
-                            LibraryVM.CurrentEmployee.PhoneNumber, LibraryVM.CurrentEmployee.Branch, 
-                            LibraryVM.CurrentEmployee.Salary, LibraryVM.CurrentEmployee.Note));
-                        LibraryVM.CurrentEmployee = new Employee();
+                        var No = EmployeeVM.Employees.Count + 1;
+                        EmployeeVM.Employees.Add(new Employee(EmployeeVM.CurrentEmployee.Id, No, EmployeeVM.CurrentEmployee.Name, EmployeeVM.CurrentEmployee.Surname,
+                            EmployeeVM.CurrentEmployee.PhoneNumber, EmployeeVM.CurrentEmployee.Branch,
+                            EmployeeVM.CurrentEmployee.Salary, EmployeeVM.CurrentEmployee.Note));
+                        EmployeeVM.CurrentEmployee = new Employee();
                     }
                     catch (Exception)
                     {
@@ -36,28 +36,28 @@ namespace Commands.EmployeeCommands
                 }
                 else
                 {
-                    foreach (var employee in LibraryVM.Employees)
+                    foreach (var employee in EmployeeVM.Employees)
                     {
-                        if (employee.No == LibraryVM.CurrentEmployee.No)
+                        if (employee.No == EmployeeVM.CurrentEmployee.No)
                         {
-                            employee.Name = LibraryVM.CurrentEmployee.Name;
-                            employee.Surname = LibraryVM.CurrentEmployee.Surname;
-                            employee.PhoneNumber = LibraryVM.CurrentEmployee.PhoneNumber;
-                            employee.Salary = LibraryVM.CurrentEmployee.Salary;
-                            employee.Branch = LibraryVM.CurrentEmployee.Branch;
-                            employee.Note = LibraryVM.CurrentEmployee.Note;
-                            LibraryVM.CurrentEmployee = new Employee();
-                            LibraryVM.btnAddEmployee.Content = "Add";
-                            LibraryVM.StateEmployee = 0;
+                            employee.Name = EmployeeVM.CurrentEmployee.Name;
+                            employee.Surname = EmployeeVM.CurrentEmployee.Surname;
+                            employee.PhoneNumber = EmployeeVM.CurrentEmployee.PhoneNumber;
+                            employee.Salary = EmployeeVM.CurrentEmployee.Salary;
+                            employee.Branch = EmployeeVM.CurrentEmployee.Branch;
+                            employee.Note = EmployeeVM.CurrentEmployee.Note;
+                            EmployeeVM.CurrentEmployee = new Employee();
+                            EmployeeVM.btnAddEmployee.Content = "Add";
+                            EmployeeVM.StateEmployee = 0;
                             return;
                         }
                     }
                 }
-                LibraryVM.StateEmployee = 0;
+                EmployeeVM.StateEmployee = 0;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateEmployee = value;
+            EmployeeVM.StateEmployee = value;
         }
     }
 }

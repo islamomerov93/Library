@@ -275,7 +275,7 @@
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                                <Button Height="30" Margin="4 4 4 4" Command="{Binding DeleteBook}" CommandParameter="4">
+                                <Button Height="30" Margin="4 4" Command="{Binding DeleteBook}" CommandParameter="4">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>

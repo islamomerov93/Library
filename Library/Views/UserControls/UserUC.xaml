@@ -35,14 +35,14 @@
     <Grid>
         <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" Margin="10,45,10,10" CornerRadius="10">
             <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
-                <Grid Background="#1C7589">
+                <Grid Background="#FF313131">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel>
                         <Grid Background="DarkGray">
-                            <TextBlock Height="25" FontSize="18" Background="#FF313131" TextAlignment="Center" FontWeight="SemiBold">Customers</TextBlock>
+                            <TextBlock Height="25" FontSize="18" Background="#FF313131" TextAlignment="Center" FontWeight="SemiBold">Users</TextBlock>
                             <Button Name="CloseButton" FontSize="17" FontWeight="UltraBold" Click="closeButton_Click" HorizontalAlignment="Right">
                                 <Button.Style>
                                     <Style TargetType="Button">
@@ -75,35 +75,36 @@
                             <TextBlock Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2" VerticalAlignment="Top">Username</TextBlock>
 
 
-                            <TextBox Grid.Column="1" FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentCustomer.Name,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalAlignment="Top">
+                            <TextBox Grid.Column="1" FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentUser.Username,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" VerticalAlignment="Top">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
                                         <Setter Property="IsEnabled" Value="False"/>
                                         <Style.Triggers>
-                                            <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                            <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="1">
                                                 <Setter Property="IsEnabled" Value="True"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </TextBox.Style>
                             </TextBox>
-                            <TextBlock Grid.Column="2" Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5" VerticalAlignment="Top">Password</TextBlock>
+                            <TextBlock Grid.Column="2" Height="25" FontSize="15" HorizontalAlignment="Right" Margin="5 10 5 2" VerticalAlignment="Top">Password</TextBlock>
+
+
+                            <StackPanel Grid.Column="1">
+                                <CheckBox Content="Can Add User" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddUser,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Book" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddBook,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Branch" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddBranch,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            </StackPanel>
+                            <StackPanel Grid.Column="2">
+                                <CheckBox Content="Can Add Customer" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddCustomer,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Employee" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddEmployee,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Rent And Sale" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanRent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                            </StackPanel>
 
                             <PasswordBox  Grid.Column="3" Height="25" Width="145" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5" VerticalAlignment="Top"/>
 
-                            <StackPanel Grid.Column="1">
-                            <CheckBox Content="Can create User" Margin="0 40 0 0" FontSize="15"/>
-                            <CheckBox Content="Can create Book" Margin="0 5 0 0" FontSize="15"/>
-                                <CheckBox Content="Can create Branc" Margin="0 5 0 0" FontSize="15"/>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2">
-                                <CheckBox Content="Can create Customer" Margin="0 40 0 0" FontSize="15"/>
-                                <CheckBox Content="Can Rent" Margin="0 5 0 0" FontSize="15"/>
-                                <CheckBox Content="Can Sale" Margin="0 5 0 0" FontSize="15"/>
-                            </StackPanel>
-
                             <StackPanel Grid.Column="4">
-                                <Button x:Name="btnAddCustomer" Height="30" Margin="4 4" Command="{Binding AddCustomer}" CommandParameter="1">
+                                <Button x:Name="btnAddUser" Height="30" Margin="4 4" Command="{Binding AddUser}" CommandParameter="1">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>
@@ -135,17 +136,17 @@
                                                 </Setter.Value>
                                             </Setter>
                                             <Style.Triggers>
-                                                <DataTrigger Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                                <DataTrigger Binding ="{Binding ElementName=MainListUser, Path=SelectedIndex}" Value="-1">
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="1">
                                                     <Setter Property="Content" Value="Add"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                                <Button Height="30" Margin="4 4" Command="{Binding EditCustomer}" CommandParameter="2">
+                                <Button Height="30" Margin="4 4" Command="{Binding EditUser}" CommandParameter="2">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>
@@ -178,17 +179,17 @@
                                             </Setter>
                                             <Style.Triggers>
                                                 <DataTrigger 
-                                             Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                             Binding ="{Binding ElementName=MainListUser, Path=SelectedIndex}" Value="-1">
                                                     <Setter Property="IsEnabled" Value="false"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="2">
                                                     <Setter Property="IsEnabled" Value="False"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                                <Button Height="30" Margin="4 4" Command="{Binding RejectCustomer}" CommandParameter="1">
+                                <Button Height="30" Margin="4 4" Command="{Binding RejectUser}" CommandParameter="1">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>
@@ -220,17 +221,17 @@
                                                 </Setter.Value>
                                             </Setter>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                                <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="1">
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
-                                                <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                                <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="2">
                                                     <Setter Property="IsEnabled" Value="True"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
                                     </Button.Style>
                                 </Button>
-                                <Button Height="30" Margin="4 4" Command="{Binding DeleteCustomer}" CommandParameter="4">
+                                <Button Height="30" Margin="4 4" Command="{Binding DeleteUser}" CommandParameter="4">
                                     <Button.BitmapEffect>
                                         <DropShadowBitmapEffect Color="Black" Direction="390" Softness="1" ShadowDepth="10" Opacity="0.5" />
                                     </Button.BitmapEffect>
@@ -263,7 +264,7 @@
                                             </Setter>
                                             <Style.Triggers>
                                                 <DataTrigger 
-                                             Binding ="{Binding ElementName=MainListCustomer, Path=SelectedIndex}" Value="-1">
+                                             Binding ="{Binding ElementName=MainListUser, Path=SelectedIndex}" Value="-1">
                                                     <Setter Property="IsEnabled" Value="false"/>
                                                 </DataTrigger>
                                             </Style.Triggers>
@@ -273,8 +274,8 @@
                             </StackPanel>
                         </Grid>
                     </StackPanel>
-                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredCustomers}" 
-                      SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredUsers}" 
+                      SelectedItem="{Binding SelectedUser,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       FontWeight="DemiBold" Margin="0 5 0 0 ">
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
@@ -291,11 +292,11 @@
                         <ListView.Style>
                             <Style TargetType="{x:Type ListView}">
                                 <Style.Triggers>
-                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="1">
+                                    <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="1">
                                         <Setter Property="IsEnabled" Value="False"/>
                                         <Setter Property="SelectedIndex" Value="-1"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding StateCustomer, UpdateSourceTrigger=PropertyChanged}" Value="2">
+                                    <DataTrigger Binding="{Binding StateUser, UpdateSourceTrigger=PropertyChanged}" Value="2">
                                         <Setter Property="IsEnabled" Value="False"/>
                                     </DataTrigger>
                                 </Style.Triggers>
@@ -304,38 +305,52 @@
                         <ListView.View>
                             <GridView >
                                 <GridViewColumn DisplayMemberBinding="{Binding Path=No}" Header=" No " Width="Auto"/>
-                                <GridViewColumn Header=" Name " Width="Auto">
+                                <GridViewColumn Header=" Userame " Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="0.5" Text="{Binding Name}" TextAlignment="Center"/>
+                                            <TextBlock Padding="0.5" Text="{Binding Username}" TextAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header=" Surname " Width="Auto">
+                                <GridViewColumn Header=" Can Add User " Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="5,0" Text="{Binding Surname}" TextAlignment="Center"/>
+                                            <TextBlock Padding="0.5" Text="{Binding CanAddUser}" TextAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header=" Phone Number " Width="Auto">
+                                <GridViewColumn Header=" Can Add Book " Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="0.5" Text="{Binding PhoneNumber}" TextAlignment="Center"/>
+                                            <TextBlock Padding="0.5" Text="{Binding CanAddBook}" TextAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header=" Joined Date " Width="Auto">
+                                <GridViewColumn Header=" Can Add Branch " Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="0.5" Text="{Binding JoinedDate, StringFormat=d}" TextAlignment="Center"/>
+                                            <TextBlock Padding="0.5" Text="{Binding CanAddBranch}" TextAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header=" Note " Width="Auto">
+                                <GridViewColumn Header=" Can Add Employee " Width="Auto">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
-                                            <TextBlock Padding="0.5" Text="{Binding Note}" TextAlignment="Center"/>
+                                            <TextBlock Padding="0.5" Text="{Binding CanAddEmployee}" TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header=" Can Add Customer " Width="Auto">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Padding="0.5" Text="{Binding CanAddCustomer}" TextAlignment="Center"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header=" Can Rent And Sale " Width="Auto">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Padding="0.5" Text="{Binding CanRentSale}" TextAlignment="Center"/>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>

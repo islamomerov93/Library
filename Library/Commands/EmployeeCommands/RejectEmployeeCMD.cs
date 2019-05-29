@@ -5,22 +5,22 @@ namespace Commands.EmployeeCommands
 {
     public class RejectEmployeeCMD : BaseCommand
     {
-        LibraryVM LibraryVM;
-        public RejectEmployeeCMD(LibraryVM LibraryVM)
+        EmployeeVM EmployeeVM;
+        public RejectEmployeeCMD(EmployeeVM EmployeeVM)
         {
-            this.LibraryVM = LibraryVM;
+            this.EmployeeVM = EmployeeVM;
         }
 
         public override void Execute(object parameter)
         {
-            if (Convert.ToInt32(parameter) == LibraryVM.StateEmployee)
+            if (Convert.ToInt32(parameter) == EmployeeVM.StateEmployee)
             {
-                LibraryVM.StateEmployee = 0;
-                LibraryVM.CurrentEmployee = null;
+                EmployeeVM.StateEmployee = 0;
+                EmployeeVM.CurrentEmployee = null;
                 return;
             }
             int value = Convert.ToInt32(parameter);
-            LibraryVM.StateEmployee = value;
+            EmployeeVM.StateEmployee = value;
         }
     }
 }

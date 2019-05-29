@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace Library.Commands.UCAddingCommands
 {
-    public class AddBookUCCMD : BaseCommand
+    public class AddUserUCCMD : BaseCommand
     {
         LibraryVM LibraryVM;
 
-        public AddBookUCCMD(LibraryVM libraryVM)
+        public AddUserUCCMD(LibraryVM libraryVM)
         {
             LibraryVM = libraryVM;
         }
 
         public override void Execute(object parameter)
         {
-            LibraryVM.Grid.Children.Add(new BookUC());
+            LibraryVM.Grid.Children.Add(new UserUC());
         }
     }
 }
