@@ -81,6 +81,8 @@
     <Compile Include="Commands\UCAddingCommands\AddBranchUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddCustomerUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddEmployeeUCCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddRentalReportsUCCMD.cs" />
+    <Compile Include="Commands\UCAddingCommands\AddSaleReportsUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddUserUCCMD.cs" />
     <Compile Include="Commands\UserCommands\AddUserCMD.cs" />
     <Compile Include="Commands\UserCommands\DeleteUserCMD.cs" />

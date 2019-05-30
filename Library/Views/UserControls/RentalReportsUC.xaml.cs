@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace Library.Views.UserControls
         public RentalReportsUC()
         {
             InitializeComponent();
+        }
+        void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            LibraryVM.Grid.Children.Remove(this);
         }
     }
 }

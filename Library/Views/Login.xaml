@@ -14,8 +14,8 @@
             <StackPanel Background="#FF313131" Margin="2">
                 <Border CornerRadius="25" Margin="10,10" BorderBrush="Red" Background="#FF565656">
                     <StackPanel>
-                        <Label Content="{x:Static p:Resources.WellComeToLibrary}" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold"/>
-                        <Label Content="{x:Static p:Resources.PleaseLogintoProceed}" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Medium" FontStyle="Italic"/>
+                        <Label Content="{x:Static p:Resources.WellComeToLibrary}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <Label Content="{x:Static p:Resources.PleaseLogintoProceed}" FontSize="25" HorizontalContentAlignment="Center" FontWeight="Medium" FontStyle="Italic"/>
                         <Grid Margin="2" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="1*"/>
@@ -26,15 +26,15 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Label FontSize="26" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <TextBox FontSize="14" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label FontSize="18" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <TextBox FontSize="18" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
-                            <Label FontSize="26" Grid.Row="1" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Password}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <PasswordBox FontSize="14" Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label FontSize="18" Grid.Row="1" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Password}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <PasswordBox FontSize="18" Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
                             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="300" Height="80">
-                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" FontSize="26" Margin="5,20" Width="140" Click="btnLogin_Click_1"/>
-                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Close}" FontSize="26" Margin="5,20" Width="140" Click="btnClose_Click_1"/>
+                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" FontSize="20" Margin="5,20" Width="140" Click="btnLogin_Click_1"/>
+                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Close}" FontSize="20" Margin="5,20" Width="140" Click="btnClose_Click_1"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
