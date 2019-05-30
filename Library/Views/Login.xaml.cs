@@ -44,7 +44,6 @@ namespace Library.Views
                 reader.Dispose();
                 cmd.Dispose();
                 con.Close();
-                MessageBox.Show("asdadasdsadasda");
             }
             catch (Exception ex)
             {
