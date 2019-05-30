@@ -127,7 +127,7 @@
     <value>BOOKS</value>
   </data>
   <data name="BookSaleRent" xml:space="preserve">
-    <value>BOOKSALERENT</value>
+    <value>BOOK SALE\RENT</value>
   </data>
   <data name="Branch" xml:space="preserve">
     <value>BRANCH</value>
@@ -160,10 +160,10 @@
     <value>REJECT</value>
   </data>
   <data name="RentReports" xml:space="preserve">
-    <value>RENTREPORTS</value>
+    <value>RENT REPORTS</value>
   </data>
   <data name="SaleReports" xml:space="preserve">
-    <value>SALEREPORTS</value>
+    <value>SALE REPORTS</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>USER</value>

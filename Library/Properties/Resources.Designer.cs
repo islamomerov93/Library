@@ -97,7 +97,7 @@ namespace Library.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BOOKSALERENT.
+        ///   Looks up a localized string similar to BOOK SALE\RENT.
         /// </summary>
         public static string BookSaleRent {
             get {
@@ -241,7 +241,7 @@ namespace Library.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to RENTREPORTS.
+        ///   Looks up a localized string similar to RENT REPORTS.
         /// </summary>
         public static string RentReports {
             get {
@@ -250,7 +250,7 @@ namespace Library.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SALEREPORTS.
+        ///   Looks up a localized string similar to SALE REPORTS.
         /// </summary>
         public static string SaleReports {
             get {

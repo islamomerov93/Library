@@ -7,35 +7,34 @@
         xmlns:local="clr-namespace:Library.Views"
         mc:Ignorable="d"
         BorderThickness="0" WindowStyle="None" BorderBrush="Black" ResizeMode="NoResize"
-        Title="Login" Height="270" Width="480" WindowState="Normal" 
-        WindowStartupLocation="CenterScreen" Background="Black">
+        Title="Login" Height="400" Width="480" WindowState="Normal" 
+        WindowStartupLocation="CenterScreen" Background="Black" SizeToContent="Height">
     <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" CornerRadius="10">
         <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
-            <StackPanel Orientation="Vertical" Background="#FF313131" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
-                <Border CornerRadius="25" Margin="10,10" BorderBrush="Red" Background="#FF565656" Width="420">
-                    <StackPanel Orientation="Vertical">
-                        <Label Content="{x:Static p:Resources.WellComeToLibrary}" FontSize="25" HorizontalAlignment="Center" FontWeight="Bold" Margin="2,5,2,0" VerticalContentAlignment="Bottom"/>
-                        <Label Content="{x:Static p:Resources.PleaseLogintoProceed}" HorizontalContentAlignment="Center" FontWeight="Medium" Margin="2,0,2,10" FontStyle="Italic" VerticalContentAlignment="Top"/>
-
+            <StackPanel Background="#FF313131" Margin="2">
+                <Border CornerRadius="25" Margin="10,10" BorderBrush="Red" Background="#FF565656">
+                    <StackPanel>
+                        <Label Content="{x:Static p:Resources.WellComeToLibrary}" FontSize="40" HorizontalAlignment="Center" FontWeight="Bold"/>
+                        <Label Content="{x:Static p:Resources.PleaseLogintoProceed}" FontSize="30" HorizontalContentAlignment="Center" FontWeight="Medium" FontStyle="Italic"/>
                         <Grid Margin="2" >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.2*"/>
+                                <ColumnDefinition Width="1*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition/>
-                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Label FontSize="14" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <TextBox FontSize="14" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Margin="0.6,4,67,5.2" Width="170" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label FontSize="26" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <TextBox FontSize="14" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
-                            <Label FontSize="14" Grid.Row="1" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Password}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <PasswordBox FontSize="14" Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Margin="0.6,5.8,67,4.4" Width="170" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label FontSize="26" Grid.Row="1" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Password}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <PasswordBox FontSize="14" Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
 
-                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" Margin="2,10" Width="100" Height="30" Click="btnLogin_Click_1"/>
-                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Close}" Margin="2,10" Width="100" Click="btnClose_Click_1"/>
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="300" Height="80">
+                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" FontSize="26" Margin="5,20" Width="140" Click="btnLogin_Click_1"/>
+                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Close}" FontSize="26" Margin="5,20" Width="140" Click="btnClose_Click_1"/>
                             </StackPanel>
                         </Grid>
                     </StackPanel>
@@ -44,42 +43,3 @@
         </Border>
     </Border>
 </Window>
-<!--<Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" CornerRadius="10">
-        <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1.5*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-                <StackPanel>
-                    <Image Stretch="Fill" Width="200" Height="200" Source="/Images\CloseBtn.png" Panel.ZIndex="0" OpacityMask="#FF280606">
-                        <Image.BitmapEffect>
-                            <DropShadowBitmapEffect Direction="-50" ShadowDepth="20" Softness="0.4" Color="#512F6F"/>
-                        </Image.BitmapEffect>
-                    </Image>
-                </StackPanel>
-                <StackPanel Grid.Row="1">
-                    <TextBlock Text="Login" Width="300" Height="60" FontFamily="David" FontSize="36" TextAlignment="Left">
-                        <TextBlock.BitmapEffect>
-                            <DropShadowBitmapEffect Direction="-50" ShadowDepth="8" Softness="0.4" Color="DarkBlue"></DropShadowBitmapEffect>
-                        </TextBlock.BitmapEffect>
-                    </TextBlock>
-                    <TextBox Width="300" Height="60" BorderThickness="3" BorderBrush="DarkGray" Background="#FFA2A2A2">
-                        <TextBox.BitmapEffect>
-                            <DropShadowBitmapEffect Direction="-50" ShadowDepth="8" Softness="0.4" Color="DarkGray"></DropShadowBitmapEffect>
-                        </TextBox.BitmapEffect>
-                    </TextBox>
-                    <TextBlock Text="Password" Width="300" Height="60" FontFamily="David" FontSize="36" TextAlignment="Left">
-                        <TextBlock.BitmapEffect>
-                            <DropShadowBitmapEffect Direction="-50" ShadowDepth="8" Softness="0.4" Color="DarkBlue"></DropShadowBitmapEffect>
-                        </TextBlock.BitmapEffect>
-                    </TextBlock>
-                    <PasswordBox Width="300" Height="60" BorderThickness="3" BorderBrush="DarkGray" Background="#FFA2A2A2">
-                        <PasswordBox.BitmapEffect>
-                            <DropShadowBitmapEffect Direction="-50" ShadowDepth="8" Softness="0.4" Color="DarkGray"></DropShadowBitmapEffect>
-                        </PasswordBox.BitmapEffect>
-                    </PasswordBox>
-                </StackPanel>
-            </Grid>
-        </Border>
-    </Border>-->

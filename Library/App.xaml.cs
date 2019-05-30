@@ -10,7 +10,7 @@ namespace Library
     {
         public App()
         {
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("az");
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("");
         }
     }
 }
