@@ -51,14 +51,14 @@
                 <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-259,0,0,0" Grid.RowSpan="2">
                     <Border x:Name="A" BorderBrush="OrangeRed" BorderThickness="2" Width="250" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
                         <StackPanel LostMouseCapture="Border_LostFocus">
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookUC}" Content="{x:Static p:Resources.Books}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddCustomerUC}" Content="{x:Static p:Resources.Customers}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}" Content="{x:Static p:Resources.Employees}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddUserUC}" Content="{x:Static p:Resources.Users}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}" Content="{x:Static p:Resources.Branches}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}" Content="{x:Static p:Resources.BookSaleRent}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}" Content="{x:Static p:Resources.SaleReports}"/>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}" Content="{x:Static p:Resources.RentReports}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddBookUC}" Content="{x:Static p:Resources.Books}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddCustomerUC}" Content="{x:Static p:Resources.Customers}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}" Content="{x:Static p:Resources.Employees}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddUserUC}" Content="{x:Static p:Resources.Users}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddBranchUC}" Content="{x:Static p:Resources.Branches}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}" Content="{x:Static p:Resources.BookSaleRent}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}" Content="{x:Static p:Resources.SaleReports}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="20" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}" Content="{x:Static p:Resources.RentReports}"/>
                         </StackPanel>
                     </Border>
                     <Grid>
