@@ -1,7 +1,5 @@
-﻿using Library.Entities;
-using Library.ViewModels;
+﻿using Library.ViewModels;
 using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -99,10 +97,6 @@ namespace Library
             else this.WindowState = WindowState.Maximized;
             maximized = !maximized;
         }
-        private void btnLeftMenuHide_Click(object sender, RoutedEventArgs e)
-        {
-            ShowHideMenu("sbHideLeftMenu", btnLeftMenuHide, btnLeftMenuShow, pnlLeftMenu);
-        }
 
         private void btnLeftMenuShow_Click(object sender, RoutedEventArgs e)
         {
@@ -113,6 +107,7 @@ namespace Library
         private void btnTopMenuHide_Click(object sender, RoutedEventArgs e)
         {
             ShowHideMenu("sbHideTopMenu", btnTopMenuHide, btnTopMenuShow, pnlTopMenu);
+
         }
 
         private void btnTopMenuShow_Click(object sender, RoutedEventArgs e)
@@ -163,9 +158,9 @@ namespace Library
             }
         }
 
-        private void BtnRightMenuShow_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Border_LostFocus(object sender, RoutedEventArgs e)
         {
-
+            ShowHideMenu("sbHideLeftMenu", btnLeftMenuHide, btnLeftMenuShow, pnlLeftMenu);
         }
     }
 }

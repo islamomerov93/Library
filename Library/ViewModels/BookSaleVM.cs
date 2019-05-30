@@ -1,4 +1,5 @@
 ﻿using Library.Entities;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Controls;
@@ -9,10 +10,12 @@ namespace Library.ViewModels
     {
         public BookSaleVM()
         {
+            Customers = new List<Customer>();
         }
         public int NoBook = 1;
         public Button btnAddBook { get; set; }
 
+        public List<Customer> Customers { get; set; }
 
         ObservableCollection<Book> books;
         public ObservableCollection<Book> Books

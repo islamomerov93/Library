@@ -96,6 +96,11 @@
     <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="Domain\Entities\UserInfo.cs" />
     <Compile Include="Models\Book_StatusModel.cs" />
+    <Compile Include="Properties\Resources.az.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.az.resx</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\BaseVM.cs" />
     <Compile Include="Models\BookRentOrSaleVM.cs" />
     <Compile Include="ViewModels\BookSaleVM.cs" />
@@ -122,6 +127,9 @@
     </Compile>
     <Compile Include="Views\UserControls\EmployeeUC.xaml.cs">
       <DependentUpon>EmployeeUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\RentalReportsUC.xaml.cs">
+      <DependentUpon>RentalReportsUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\SalesReportsUC.xaml.cs">
       <DependentUpon>SalesReportsUC.xaml</DependentUpon>
@@ -165,6 +173,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\UserControls\RentalReportsUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\UserControls\SalesReportsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,8 +201,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.az.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.az.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

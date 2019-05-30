@@ -1,6 +1,7 @@
 ﻿using Library.Domain.Entities;
 using System;
 using System.Data.SqlClient;
+using System.Resources;
 using System.Windows;
 
 namespace Library.Views

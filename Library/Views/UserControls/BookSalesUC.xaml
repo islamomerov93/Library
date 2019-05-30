@@ -47,8 +47,8 @@
                             </StackPanel>
                             
                             <StackPanel Grid.Column="1">
-                                <ComboBox x:Name="BookCmBx" Margin="5 20 5 5" IsTextSearchEnabled="True" ItemsSource="{Binding Books}" SelectedItem="{Binding SelectedBook}" DisplayMemberPath="Title" SelectedIndex="0"/>
-                                <ComboBox x:Name="CustomerCmBx" Margin="5 20 5 5" IsTextSearchEnabled="True" ItemsSource="{Binding Customers}" DisplayMemberPath="Fullname"/>
+                                <ComboBox x:Name="BookCmBx" Margin="5 20 5 5" KeyUp="BookCmBx_KeyUp"  StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" SelectedItem="{Binding SelectedBook}" DisplayMemberPath="Title"/>
+                                <ComboBox x:Name="CustomerCmBx" Margin="5 20 5 5" KeyUp="CustomerCmBx_KeyUp" StaysOpenOnEdit="True" IsEditable="True" IsTextSearchEnabled="False" ItemsSource="{Binding Customers}" DisplayMemberPath="Fullname"/>
                             </StackPanel>
 
                             <StackPanel Grid.Column="2">

@@ -1,6 +1,8 @@
 ﻿using Library.Entities;
 using Library.ViewModels;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -27,12 +29,26 @@ namespace Library.Views.UserControls
             Books.Add(book3);
             Books.Add(book4);
             BookSaleVM.Books = Books;
-
+            BookCmBx.ItemsSource = Books;
+            BookCmBx.
             DataContext = BookSaleVM;
         }
         void closeButton_Click(object sender, RoutedEventArgs e)
         {
             LibraryVM.Grid.Children.Remove(this);
+        }
+
+
+        private void BookCmBx_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            BookCmBx.IsDropDownOpen = true;
+            BookCmBx.ItemsSource = BookSaleVM.Books.ToList().Where(x => x.Title.ToLower().Contains(BookCmBx.Text.ToLower()));
+        }
+
+        private void CustomerCmBx_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            CustomerCmBx.IsDropDownOpen = true;
+            CustomerCmBx.ItemsSource = BookSaleVM.Customers.Where(x => x.Fullname.ToLower().Contains(CustomerCmBx.Text.ToLower()));
         }
     }
 }

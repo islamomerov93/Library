@@ -24,5 +24,9 @@ namespace Library.Entities
         {
             return new Customer(Id,No,Name,Surname,PhoneNumber,Note,JoinedDate);
         }
+        public string Fullname
+        {
+            get { return Name + " " + Surname; }
+        }
     }
 }

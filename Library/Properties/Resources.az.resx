@@ -118,84 +118,84 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Add" xml:space="preserve">
-    <value>ADD</value>
+    <value>ƏLAVƏ ET</value>
   </data>
   <data name="Book" xml:space="preserve">
-    <value>BOOK</value>
+    <value>KİTAB</value>
   </data>
   <data name="Books" xml:space="preserve">
-    <value>BOOKS</value>
+    <value>KİTABLAR</value>
   </data>
   <data name="BookSaleRent" xml:space="preserve">
-    <value>BOOKSALERENT</value>
+    <value>KİTAB ALIŞI/SATIŞI</value>
   </data>
   <data name="Branch" xml:space="preserve">
-    <value>BRANCH</value>
+    <value>FİLİAL</value>
   </data>
   <data name="Branches" xml:space="preserve">
-    <value>BRANCHES</value>
+    <value>FİLİALLAR</value>
   </data>
   <data name="Customer" xml:space="preserve">
-    <value>CUSTOMER</value>
+    <value>MÜŞTƏRİ</value>
   </data>
   <data name="Customers" xml:space="preserve">
-    <value>CUSTOMERS</value>
+    <value>MÜŞTƏRİLƏR</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>DELETE</value>
+    <value>SİL</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>EDIT</value>
+    <value>DÜZƏLİŞ ET</value>
   </data>
   <data name="Employee" xml:space="preserve">
-    <value>EMPLOYEE</value>
+    <value>İŞÇİ</value>
   </data>
   <data name="Employees" xml:space="preserve">
-    <value>EMPLOYEES</value>
+    <value>İŞÇİLƏR</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>NO</value>
+    <value>S/S</value>
   </data>
   <data name="Reject" xml:space="preserve">
-    <value>REJECT</value>
+    <value>İMTİNA ET</value>
   </data>
   <data name="RentReports" xml:space="preserve">
-    <value>RENTREPORTS</value>
+    <value>İCARƏ HESABATLARI</value>
   </data>
   <data name="SaleReports" xml:space="preserve">
-    <value>SALEREPORTS</value>
+    <value>SATIŞ HESABATLARI</value>
   </data>
   <data name="User" xml:space="preserve">
-    <value>USER</value>
+    <value>İSTİFADƏÇİ</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>USERS</value>
+    <value>İSTİFADƏÇİLƏR</value>
   </data>
   <data name="AreYouSure" xml:space="preserve">
-    <value>Are You Sure ?</value>
+    <value>Əminsiniz ?</value>
   </data>
   <data name="Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Ad</value>
   </data>
   <data name="Surname" xml:space="preserve">
-    <value>Surname</value>
+    <value>Soyad</value>
   </data>
   <data name="WellComeToLibrary" xml:space="preserve">
-    <value>WELLCOME TO LIBRARY</value>
+    <value>KİTABXANAYA XOŞ GƏLMİSİNİZ</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>CLOSE</value>
+    <value>BAĞLAYIN</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>LOGIN</value>
+    <value>DAXİL OLUN</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Şifrə</value>
   </data>
   <data name="PleaseLogintoProceed" xml:space="preserve">
-    <value>Please Login to Proceed</value>
+    <value>Davam Etmək üçün Giriş Edin</value>
   </data>
   <data name="Username" xml:space="preserve">
-    <value>Username</value>
+    <value>İstifadəçi Adı</value>
   </data>
 </root>

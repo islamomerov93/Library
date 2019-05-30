@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:p = "clr-namespace:Library.Properties"
         xmlns:local="clr-namespace:Library"
         mc:Ignorable="d"
         Height="650" Width="1000" 
@@ -48,26 +49,24 @@
                     </Image>
                 </Grid>
                 <StackPanel Panel.ZIndex="2" Name="pnlLeftMenu" Orientation="Horizontal" HorizontalAlignment="Left" Margin="-259,0,0,0" Grid.RowSpan="2">
-                    <Border BorderBrush="OrangeRed" BorderThickness="2" Width="250" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
-                        <StackPanel>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookUC}">BOOKS</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddCustomerUC}">CUSTOMERS</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}">EMPLOYEES</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddUserUC}">USERS</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}">BRANCHES</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}">BOOK SALE / Rent</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}">SALES REPORTS</Button>
-                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}">RENTAL REPORTS</Button>
+                    <Border x:Name="A" BorderBrush="OrangeRed" BorderThickness="2" Width="250" Background="#FF373B3C" CornerRadius="017,20,20,20" Opacity="0.9">
+                        <StackPanel LostMouseCapture="Border_LostFocus">
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookUC}" Content="{x:Static p:Resources.Books}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddCustomerUC}" Content="{x:Static p:Resources.Customers}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddEmployeeUC}" Content="{x:Static p:Resources.Employees}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddUserUC}" Content="{x:Static p:Resources.Users}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBranchUC}" Content="{x:Static p:Resources.Branches}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddBookSaleUC}" Content="{x:Static p:Resources.BookSaleRent}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddSaleReportsUC}" Content="{x:Static p:Resources.SaleReports}"/>
+                            <Button Style="{StaticResource MenuBtn}" Margin="10,30,5,0" Height="40" FontSize="22" FontWeight="SemiBold" Command="{Binding AddRentalReportsUC}" Content="{x:Static p:Resources.RentReports}"/>
                         </StackPanel>
                     </Border>
                     <Grid>
-                        <Button Name="btnLeftMenuHide" Width="40" Height="40" Click="btnLeftMenuHide_Click" Visibility="Hidden" VerticalAlignment="Top" Margin="15,5,0,0">
-                            <StackPanel>
-                                <Image Source="/Images/CloseMenu.png" Margin="1"/>
-                            </StackPanel>
+                        <Button Name="btnLeftMenuHide" Width="40" Height="40" Visibility="Hidden" VerticalAlignment="Top" Margin="15,5,0,0">
                             <Button.Style>
                                 <Style TargetType="{x:Type Button}">
                                     <Setter Property="Background" Value="Transparent"/>
+                                    <Setter Property="IsEnabled" Value="False"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate TargetType="{x:Type Button}">
@@ -119,9 +118,9 @@
                             <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel>
-                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 10 0 10" HorizontalAlignment="Right" FontWeight="SemiBold">Name   :</TextBlock>
-                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10,0,0,10" HorizontalAlignment="Right" FontWeight="SemiBold">Surname  :</TextBlock>
-                        </StackPanel>
+                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 10 10 10" HorizontalAlignment="Right" FontWeight="SemiBold" Text="{x:Static p:Resources.Name}"/>
+                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 0 10 10" HorizontalAlignment="Right" FontWeight="SemiBold" Text="{x:Static p:Resources.Surname}"/>
+                            </StackPanel>
                         <StackPanel Grid.Column="1">
                                 <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 10 10 10" HorizontalAlignment="Left" Text="{Binding User.Name}" Grid.Column="1" FontWeight="SemiBold"/>
                                 <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 0 10 10" HorizontalAlignment="Left" Text="{Binding User.Surname}" Grid.Column="1" FontWeight="SemiBold"/>
@@ -236,7 +235,7 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
-                            <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">Are you sure?</TextBlock>
+                            <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Text="{x:Static p:Resources.AreYouSure}"/>
                             <TextBlock x:Name="tbTime" Foreground="Black" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14">00:00:03</TextBlock>
                         </Grid> 
                     </Border>

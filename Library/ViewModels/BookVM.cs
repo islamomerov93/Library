@@ -19,6 +19,7 @@ namespace Library.ViewModels
             EditBook = new EditBookCMD(this);
             RejectBook = new RejectBookCMD(this);
             DeleteBook = new DeleteBookCMD(this);
+            Customers = new List<Customer>();
 
             CurrentBook = new Book();
         }  
@@ -28,6 +29,7 @@ namespace Library.ViewModels
         public EditBookCMD EditBook { get; set; }
         public RejectBookCMD RejectBook { get; set; }
         public DeleteBookCMD DeleteBook { get; set; }
+        public List<Customer> Customers{ get; set; }
 
         int stateBook;
         public int StateBook
