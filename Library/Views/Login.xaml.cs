@@ -1,17 +1,11 @@
-﻿using Library.Domain.Entities;
-using System;
+﻿using System;
 using System.Data.SqlClient;
-using System.Resources;
 using System.Windows;
 
 namespace Library.Views
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
     public partial class Login : Window
     {
-        static String connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Library;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public Login()
         {
             InitializeComponent();
@@ -21,7 +15,7 @@ namespace Library.Views
             String message = "Invalid Credentials";
             try
             {
-                using (SqlConnection con = new SqlConnection(connectionString))
+                using (SqlConnection con = new SqlConnection(/*connectionString*/))
                 {
                     con.Open();
                     using (SqlCommand cmd = new SqlCommand("Select * from Users where Username=@Username and Password=@Password", con))
@@ -34,8 +28,8 @@ namespace Library.Views
                             if (reader["Password"].ToString().Equals(txtPassword.Password.ToString(), StringComparison.InvariantCulture))
                             {
                                 message = "1";
-                                UserInfo.Username = txtUsername.Text.ToString();
-                                UserInfo.Username = reader["Username"].ToString();
+                                //UserInfo.Username = txtUsername.Text.ToString();
+                                //UserInfo.Username = reader["Username"].ToString();
                             }
                         }
                     }

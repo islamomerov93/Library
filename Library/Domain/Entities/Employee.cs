@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Library.Domain.Abstractions;
+using System;
 
-namespace Library.Entities
+namespace Library.Domain.Entities
 {
     public class Employee : BaseUser
     {

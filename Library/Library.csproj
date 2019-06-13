@@ -35,8 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,14 +101,14 @@
     <Compile Include="Commands\UserCommands\EditUserCMD.cs" />
     <Compile Include="Commands\UserCommands\RejectUserCMD.cs" />
     <Compile Include="Domain\Abstractions\BaseUser.cs" />
-    <Compile Include="Domain\Abstractions\IUnitOfWork.cs" />
+    <Compile Include="Domain\Configuration.cs" />
     <Compile Include="Domain\Entities\Book.cs" />
     <Compile Include="Domain\Entities\Branch.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
     <Compile Include="Domain\Entities\Employee.cs" />
     <Compile Include="Domain\Entities\Permissions.cs" />
     <Compile Include="Domain\Entities\User.cs" />
-    <Compile Include="Domain\Entities\UserInfo.cs" />
+    <Compile Include="Domain\LibraryDBContext.cs" />
     <Compile Include="Models\Book_StatusModel.cs" />
     <Compile Include="Properties\Resources.az.Designer.cs">
       <AutoGen>True</AutoGen>

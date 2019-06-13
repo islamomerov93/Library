@@ -1,25 +1,23 @@
-﻿using Library.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Library.Domain.Entities
 {
     public class User
     {
+        [Key]
         public int Id { get; set; }
+        [NotMapped]
         public int No { get; set; }
         public string Username { get; set; }
         public int Password { get; set; }
-        public Permissions Permissions { get; set; }
+        public Permission Permissions { get; set; }
 
         public User()
         {
         }
 
-        public User(int id, int no, string username, int password, Permissions permissions)
+        public User(int id, int no, string username, int password, Permission permissions)
         {
             Username = username;
             Password = password;

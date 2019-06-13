@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Library.Entities
+namespace Library.Domain.Entities
 {
     public class Branch
     {
+        [Key]
         public int Id { get; set; }
+        [NotMapped]
         public int No { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Library.Entities
+namespace Library.Domain.Entities
 {
     public class Book
     {
+        [Key]
         public int Id { get; set; }
+        [NotMapped]
         public int No { get; set; }
+        [Column(TypeName = "nvarchar(200)")]
         public string Title { get; set; }
+        [Column(TypeName = "nvarchar(60)")]
         public string AuthorName { get; set; }
         public float PurchaseCost { get; set; }
         public int SaleCost { get; set; }
         public int Quantity { get; set; }
+        [Column(TypeName = "text")]
         public string Note { get; set; }
         public Branch Branch { get; set; }
 

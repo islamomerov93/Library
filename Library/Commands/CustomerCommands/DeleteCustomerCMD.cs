@@ -1,4 +1,4 @@
-﻿using Library.Entities;
+﻿using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Collections.ObjectModel;
