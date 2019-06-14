@@ -1,17 +1,14 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using Library.Views.UserControls;
 using System;
 
 namespace Commands.UserCommands
 {
-    public class EditUserCMD : BaseCommand
+    public class EditUserCMD : BaseUserCommand
     {
-        UserVM UserVM;
-        public EditUserCMD(UserVM UserVM)
-        {
-            this.UserVM = UserVM;
-        }
+        public EditUserCMD(UserVM UserVM) : base(UserVM) { }
 
         public override void Execute(object parameter)
         {

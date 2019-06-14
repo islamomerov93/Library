@@ -1,15 +1,12 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.BookCommands
 {
-    public class EditBookCMD : BaseCommand
+    public class EditBookCMD : BaseBookCommand
     {
-        BookVM BookVM;
-        public EditBookCMD(BookVM BookVM)
-        {
-            this.BookVM = BookVM;
-        }
+        public EditBookCMD(BookVM BookVM) : base(BookVM) { }
 
         public override void Execute(object parameter)
         {

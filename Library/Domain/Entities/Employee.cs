@@ -5,7 +5,8 @@ namespace Library.Domain.Entities
 {
     public class Employee : BaseUser
     {
-        public Branch Branch { get; set; }
+        public int BranchId { get; set; }
+        public virtual Branch Branch { get; set; }
         public float Salary { get; set; }
 
         public string PhoneNumber { get; set; }

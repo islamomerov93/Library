@@ -12,6 +12,7 @@ namespace Library.Domain
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "LibraryDbContext";
         }
         protected override void Seed(LibraryDBContext context)

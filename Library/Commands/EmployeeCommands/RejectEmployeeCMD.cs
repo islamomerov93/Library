@@ -1,15 +1,12 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.EmployeeCommands
 {
-    public class RejectEmployeeCMD : BaseCommand
+    public class RejectEmployeeCMD : BaseEmployeeCommand
     {
-        EmployeeVM EmployeeVM;
-        public RejectEmployeeCMD(EmployeeVM EmployeeVM)
-        {
-            this.EmployeeVM = EmployeeVM;
-        }
+        public RejectEmployeeCMD(EmployeeVM EmployeeVM) : base(EmployeeVM) { }
 
         public override void Execute(object parameter)
         {

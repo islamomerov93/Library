@@ -1,18 +1,14 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Windows;
 
 namespace Commands.EmployeeCommands
 {
-    public class AddEmployeeCMD : BaseCommand
+    public class AddEmployeeCMD : BaseEmployeeCommand
     {
-        EmployeeVM EmployeeVM;
-
-        public AddEmployeeCMD(EmployeeVM EmployeeVM)
-        {
-            this.EmployeeVM = EmployeeVM;
-        }
+        public AddEmployeeCMD(EmployeeVM EmployeeVM) : base(EmployeeVM) { }
 
         public override void Execute(object parameter)
         {

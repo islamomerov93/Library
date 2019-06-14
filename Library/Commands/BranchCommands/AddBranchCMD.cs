@@ -1,18 +1,14 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Windows;
 
 namespace Commands.BranchCommands
 {
-    public class AddBranchCMD : BaseCommand
+    public class AddBranchCMD : BaseBranchCommand
     {
-        BranchVM BranchVM;
-
-        public AddBranchCMD(BranchVM BranchVM)
-        {
-            this.BranchVM = BranchVM;
-        }
+        public AddBranchCMD(BranchVM BranchVM) : base(BranchVM) { }
 
         public override void Execute(object parameter)
         {

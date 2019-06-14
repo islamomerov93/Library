@@ -1,16 +1,12 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.CustomerCommands
 {
-    public class AddCustomerCMD : BaseCommand
+    public class AddCustomerCMD : BaseCustomerCommand
     {
-        CustomerVM CustomerVM;
-
-        public AddCustomerCMD(CustomerVM CustomerVM)
-        {
-            this.CustomerVM = CustomerVM;
-        }
+        public AddCustomerCMD(CustomerVM CustomerVM) : base(CustomerVM) { }
 
         public override void Execute(object parameter)
         {

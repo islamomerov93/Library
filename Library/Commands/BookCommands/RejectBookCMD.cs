@@ -1,15 +1,13 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.BookCommands
 {
-    public class RejectBookCMD : BaseCommand
+    public class RejectBookCMD : BaseBookCommand
     {
         BookVM BookVM;
-        public RejectBookCMD(BookVM BookVM)
-        {
-            this.BookVM = BookVM;
-        }
+        public RejectBookCMD(BookVM BookVM) : base(BookVM) { }
 
         public override void Execute(object parameter)
         {

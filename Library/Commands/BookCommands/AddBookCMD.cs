@@ -1,18 +1,14 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Windows;
 
 namespace Commands.BookCommands
 {
-    public class AddBookCMD : BaseCommand
+    public class AddBookCMD : BaseBookCommand
     {
-        BookVM BookVM;
-
-        public AddBookCMD(BookVM BookVM)
-        {
-            this.BookVM = BookVM;
-        }
+        public AddBookCMD(BookVM BookVM) : base(BookVM){}
 
         public override void Execute(object parameter)
         {

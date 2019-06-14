@@ -1,15 +1,12 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.BranchCommands
 {
-    public class RejectBranchCMD : BaseCommand
+    public class RejectBranchCMD : BaseBranchCommand
     {
-        BranchVM BranchVM;
-        public RejectBranchCMD(BranchVM BranchVM)
-        {
-            this.BranchVM = BranchVM;
-        }
+        public RejectBranchCMD(BranchVM BranchVM) : base(BranchVM) { }
 
         public override void Execute(object parameter)
         {

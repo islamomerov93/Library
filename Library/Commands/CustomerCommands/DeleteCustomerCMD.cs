@@ -1,4 +1,5 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Collections.ObjectModel;
@@ -6,14 +7,9 @@ using System.Linq;
 
 namespace Commands.CustomerCommands
 {
-    public class DeleteCustomerCMD : BaseCommand
+    public class DeleteCustomerCMD : BaseCustomerCommand
     {
-        CustomerVM CustomerVM;
-
-        public DeleteCustomerCMD(CustomerVM CustomerVM)
-        {
-            this.CustomerVM = CustomerVM;
-        }
+        public DeleteCustomerCMD(CustomerVM CustomerVM) : base(CustomerVM) { }
 
         public override void Execute(object parameter)
         {

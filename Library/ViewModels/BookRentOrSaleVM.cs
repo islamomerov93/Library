@@ -9,8 +9,8 @@ namespace Library.ViewModels
         {
         }
 
-        ObservableCollection<Book_StatusModel> books;
-        public ObservableCollection<Book_StatusModel> AllBooks {
+        ObservableCollection<BookState> books;
+        public ObservableCollection<BookState> AllBooks {
             get { return books; }
             set { books = value; OnPropertyChanged(new System.ComponentModel.PropertyChangedEventArgs(nameof(AllBooks))); }
         }

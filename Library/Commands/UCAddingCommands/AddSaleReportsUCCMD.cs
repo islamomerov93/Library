@@ -1,17 +1,12 @@
-﻿using Commands;
+﻿using Library.Commands.Abstractions;
 using Library.ViewModels;
 using Library.Views.UserControls;
 
 namespace Library.Commands.UCAddingCommands
 {
-    public class AddSaleReportsUCCMD : BaseCommand
+    public class AddSaleReportsUCCMD : BaseUCAddingCommand
     {
-        LibraryVM LibraryVM;
-
-        public AddSaleReportsUCCMD(LibraryVM libraryVM)
-        {
-            LibraryVM = libraryVM;
-        }
+        public AddSaleReportsUCCMD(LibraryVM libraryVM) : base(libraryVM) { }
 
         public override void Execute(object parameter)
         {

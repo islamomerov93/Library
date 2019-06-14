@@ -71,8 +71,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\Abstractions\BaseBookCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseBranchCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseCustomerCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseEmployeeCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseUCAddingCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseUserCommand.cs" />
     <Compile Include="Commands\BookCommands\AddBookCMD.cs" />
-    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\BookCommands\DeleteBookCMD.cs" />
     <Compile Include="Commands\BookCommands\EditBookCMD.cs" />
     <Compile Include="Commands\BookCommands\RejectBookCMD.cs" />
@@ -100,23 +105,39 @@
     <Compile Include="Commands\UserCommands\DeleteUserCMD.cs" />
     <Compile Include="Commands\UserCommands\EditUserCMD.cs" />
     <Compile Include="Commands\UserCommands\RejectUserCMD.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Class1.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\BookRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\BranchRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\SoldBookRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\EmployeeRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\UserRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\CustomerRepository.cs" />
     <Compile Include="Domain\Abstractions\BaseUser.cs" />
-    <Compile Include="Domain\Configuration.cs" />
+    <Compile Include="Domain\Abstractions\IBookStateRepository.cs" />
+    <Compile Include="Domain\Abstractions\IEmployeeRepository.cs" />
+    <Compile Include="Domain\Abstractions\IUserRepository.cs" />
+    <Compile Include="Domain\Abstractions\ICustomerRepository.cs" />
+    <Compile Include="Domain\Abstractions\IBranchRepository.cs" />
+    <Compile Include="Domain\Abstractions\IUnitOfWork.cs" />
+    <Compile Include="Domain\Abstractions\IBookRepository.cs" />
+    <Compile Include="Domain\Abstractions\IRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Configuration.cs" />
     <Compile Include="Domain\Entities\Book.cs" />
     <Compile Include="Domain\Entities\Branch.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
     <Compile Include="Domain\Entities\Employee.cs" />
     <Compile Include="Domain\Entities\Permissions.cs" />
     <Compile Include="Domain\Entities\User.cs" />
-    <Compile Include="Domain\LibraryDBContext.cs" />
-    <Compile Include="Models\Book_StatusModel.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\LibraryDBContext.cs" />
+    <Compile Include="Models\RentedBook.cs" />
+    <Compile Include="Models\SoldBook.cs" />
     <Compile Include="Properties\Resources.az.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.az.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseVM.cs" />
-    <Compile Include="Models\BookRentOrSaleVM.cs" />
+    <Compile Include="ViewModels\BookRentOrSaleVM.cs" />
     <Compile Include="ViewModels\BookSaleVM.cs" />
     <Compile Include="ViewModels\BookVM.cs" />
     <Compile Include="ViewModels\BranchVM.cs" />
@@ -253,5 +274,6 @@
   <ItemGroup>
     <Resource Include="Images\normal.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

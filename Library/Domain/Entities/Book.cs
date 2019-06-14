@@ -14,11 +14,12 @@ namespace Library.Domain.Entities
         public string Title { get; set; }
         [Column(TypeName = "nvarchar(60)")]
         public string AuthorName { get; set; }
-        public float PurchaseCost { get; set; }
-        public int SaleCost { get; set; }
-        public int Quantity { get; set; }
+        public decimal PurchaseCost { get; set; }
+        public decimal SaleCost { get; set; }
+        public decimal Quantity { get; set; }
         [Column(TypeName = "text")]
         public string Note { get; set; }
+        public int BranchId { get; set; }
         public Branch Branch { get; set; }
 
         public Book() {}

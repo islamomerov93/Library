@@ -1,4 +1,5 @@
 using Library.Domain.Entities;
+using Library.Models;
 using System.Data.Entity;
 
 namespace Library.Domain
@@ -21,5 +22,7 @@ namespace Library.Domain
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<SoldBook> SoldBooks { get; set; }
+        public virtual DbSet<RentedBook> RentedBooks { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Collections.ObjectModel;
@@ -6,14 +7,9 @@ using System.Linq;
 
 namespace Commands.BranchCommands
 {
-    public class DeleteBranchCMD : BaseCommand
+    public class DeleteBranchCMD : BaseBranchCommand
     {
-        BranchVM BranchVM;
-
-        public DeleteBranchCMD(BranchVM BranchVM)
-        {
-            this.BranchVM = BranchVM;
-        }
+        public DeleteBranchCMD(BranchVM BranchVM) : base(BranchVM) { }
 
         public override void Execute(object parameter)
         {

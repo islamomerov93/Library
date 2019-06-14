@@ -1,22 +1,12 @@
-﻿using Commands;
+﻿using Library.Commands.Abstractions;
 using Library.ViewModels;
 using Library.Views.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Commands.UCAddingCommands
 {
-    public class AddUserUCCMD : BaseCommand
+    public class AddUserUCCMD : BaseUCAddingCommand
     {
-        LibraryVM LibraryVM;
-
-        public AddUserUCCMD(LibraryVM libraryVM)
-        {
-            LibraryVM = libraryVM;
-        }
+        public AddUserUCCMD(LibraryVM libraryVM) : base(libraryVM) { }
 
         public override void Execute(object parameter)
         {

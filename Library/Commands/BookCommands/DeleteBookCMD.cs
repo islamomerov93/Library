@@ -1,4 +1,5 @@
-﻿using Library.Domain.Entities;
+﻿using Library.Commands.Abstractions;
+using Library.Domain.Entities;
 using Library.ViewModels;
 using System;
 using System.Collections.ObjectModel;
@@ -6,14 +7,10 @@ using System.Linq;
 
 namespace Commands.BookCommands
 {
-    public class DeleteBookCMD : BaseCommand
+    public class DeleteBookCMD : BaseBookCommand
     {
-        BookVM BookVM;
 
-        public DeleteBookCMD(BookVM BookVM)
-        {
-            this.BookVM = BookVM;
-        }
+        public DeleteBookCMD(BookVM BookVM) : base(BookVM) {}
 
 
         public override void Execute(object parameter)

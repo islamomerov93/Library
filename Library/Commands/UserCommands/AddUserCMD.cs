@@ -1,16 +1,12 @@
-﻿using Library.ViewModels;
+﻿using Library.Commands.Abstractions;
+using Library.ViewModels;
 using System;
 
 namespace Commands.UserCommands
 {
-    public class AddUserCMD : BaseCommand
+    public class AddUserCMD : BaseUserCommand
     {
-        UserVM UserVM;
-
-        public AddUserCMD(UserVM UserVM)
-        {
-            this.UserVM = UserVM;
-        }
+        public AddUserCMD(UserVM UserVM) : base(UserVM) { }
 
         public override void Execute(object parameter)
         {
