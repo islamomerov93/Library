@@ -1,6 +1,8 @@
-﻿using Library.ViewModels;
+﻿using Library.Domain.Entities;
+using Library.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,10 @@ namespace Library.Views.UserControls
         {
             InitializeComponent();
             UserVM = new UserVM();
+            UserVM.Users = new ObservableCollection<User>(App.UnitOfWork.Users.GetAll());
+            UserVM.PasswordBox = PasswordBx;
+            UserVM.btnAddUser = btnAddUser;
+            DataContext = UserVM;
         }
         void closeButton_Click(object sender, RoutedEventArgs e)
         {

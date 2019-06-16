@@ -44,12 +44,12 @@ namespace Library.DataAccess.EF_CodeFirst.Repositories
                     User newUser = context.Users.FirstOrDefault(x => x.Id == user.Id);
                     newUser.Username = user.Username;
                     newUser.Password = user.Password;
-                    newUser.Permissions.CanAddBook = user.Permissions.CanAddBook;
-                    newUser.Permissions.CanAddCustomer = user.Permissions.CanAddCustomer;
-                    newUser.Permissions.CanAddEmployee = user.Permissions.CanAddEmployee;
-                    newUser.Permissions.CanAddBranch = user.Permissions.CanAddBranch;
-                    newUser.Permissions.CanAddUser = user.Permissions.CanAddUser;
-                    newUser.Permissions.CanRentSale = user.Permissions.CanRentSale;
+                    newUser.CanAddBook = user.CanAddBook;
+                    newUser.CanAddCustomer = user.CanAddCustomer;
+                    newUser.CanAddEmployee = user.CanAddEmployee;
+                    newUser.CanAddBranch = user.CanAddBranch;
+                    newUser.CanAddUser = user.CanAddUser;
+                    newUser.CanRentSale = user.CanRentSale;
                     context.SaveChanges();
                 }
             }

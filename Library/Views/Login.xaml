@@ -6,9 +6,10 @@
          xmlns:p = "clr-namespace:Library.Properties"
         xmlns:local="clr-namespace:Library.Views"
         mc:Ignorable="d"
+        AllowsTransparency="True"
         BorderThickness="0" WindowStyle="None" BorderBrush="Black" ResizeMode="NoResize"
         Title="Login" Height="400" Width="480" WindowState="Normal" 
-        WindowStartupLocation="CenterScreen" Background="Black" SizeToContent="Height">
+        WindowStartupLocation="CenterScreen" Background="Transparent" SizeToContent="Height">
     <Border Background="OrangeRed" BorderThickness="5" BorderBrush="#FF313131" CornerRadius="10">
         <Border Background="DarkGray" BorderThickness="5" BorderBrush="#FF565656" Margin="5" CornerRadius="10">
             <StackPanel Background="#FF313131" Margin="2">
@@ -26,14 +27,25 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Label FontSize="18" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <TextBox FontSize="18" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label FontSize="18" Grid.Row="0" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Username}" 
+                                   VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <TextBox FontSize="18" Grid.Row="0" Grid.Column="1" x:Name="txtUsername" Width="220"  Margin="0,7"
+                                     VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                                     Text="{Binding Username,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}">
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding logInCMD}" Key="Enter" />
+                                </TextBox.InputBindings>
+                            </TextBox>
 
                             <Label FontSize="18" Grid.Row="1" Grid.Column="0" Margin="0,5" Content="{x:Static p:Resources.Password}" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>
-                            <PasswordBox FontSize="18" Grid.Row="1" Grid.Column="1" x:Name="txtPassword" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <PasswordBox FontSize="18" Grid.Row="1" Grid.Column="1" x:Name="bxPassword" Width="220"  Margin="0,7"  VerticalContentAlignment="Center" HorizontalContentAlignment="Left">
+                                <PasswordBox.InputBindings>
+                                    <KeyBinding Command="{Binding logInCMD}" CommandParameter="{Binding ElementName=bxPassword}" Key="Enter" />
+                                </PasswordBox.InputBindings>
+                            </PasswordBox>
 
                             <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Width="300" Height="80">
-                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" FontSize="20" Margin="5,20" Width="140" Click="btnLogin_Click_1"/>
+                                <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Login}" x:Name="btnLogin" FontSize="20" Margin="5,20" Width="140" Command="{Binding logInCMD}"/>
                                 <Button Style="{StaticResource MenuBtn}" Content="{x:Static p:Resources.Close}" FontSize="20" Margin="5,20" Width="140" Click="btnClose_Click_1"/>
                             </StackPanel>
                         </Grid>

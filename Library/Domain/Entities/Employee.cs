@@ -3,7 +3,7 @@ using System;
 
 namespace Library.Domain.Entities
 {
-    public class Employee : BaseUser
+    public class Employee : BaseHuman
     {
         public int BranchId { get; set; }
         public virtual Branch Branch { get; set; }

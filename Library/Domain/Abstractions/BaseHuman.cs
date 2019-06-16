@@ -1,13 +1,6 @@
-﻿using Library.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Library.Domain.Abstractions
+﻿namespace Library.Domain.Abstractions
 {
-    public abstract class BaseUser
+    public abstract class BaseHuman
     {
         public int Id { get; set; }
         public int No { get; set; }
@@ -15,11 +8,11 @@ namespace Library.Domain.Abstractions
         public string Surname { get; set; }
         public string Note { get; set; }
 
-        protected BaseUser()
+        protected BaseHuman()
         {
         }
 
-        protected BaseUser(int id, int no, string name, string surname, string note)
+        protected BaseHuman(int id, int no, string name, string surname, string note)
         {
             Id = id;
             No = no;

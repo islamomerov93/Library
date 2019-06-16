@@ -6,7 +6,6 @@ namespace Commands.BookCommands
 {
     public class RejectBookCMD : BaseBookCommand
     {
-        BookVM BookVM;
         public RejectBookCMD(BookVM BookVM) : base(BookVM) { }
 
         public override void Execute(object parameter)

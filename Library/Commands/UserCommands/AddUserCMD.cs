@@ -1,6 +1,11 @@
-﻿using Library.Commands.Abstractions;
+﻿using Library;
+using Library.Commands.Abstractions;
+using Library.Domain.Entities;
+using Library.Helper;
 using Library.ViewModels;
 using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Commands.UserCommands
 {
@@ -12,38 +17,32 @@ namespace Commands.UserCommands
         {
             if (Convert.ToInt32(parameter) == UserVM.StateUser)
             {
-                if (UserVM.btnAddUser.Content.ToString() == "Add")
+                try
                 {
-                    //try
-                    //{
-                    //    var No = CustomerVM.Customers.Count + 1;
-                    //    CustomerVM.Customers.Add(new Customer(No, CustomerVM.CurrentCustomer.Name, CustomerVM.CurrentCustomer.Surname,
-                    //        CustomerVM.CurrentCustomer.PhoneNumber, CustomerVM.CurrentCustomer.JoinedDate, CustomerVM.CurrentCustomer.Note));
-                    //    CustomerVM.CurrentCustomer = new Customer();
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    MessageBox.Show("Fill all fields", "Error occured while adding Customer!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    //}
+                    if (UserVM.CurrentUser.Id == 0)
+                    {
+                        if (App.UnitOfWork.Users.GetAll().AsQueryable().FirstOrDefault(x => x.Username == UserVM.CurrentUser.Username) != null)
+                        {
+                            (new CustomMessageBox()).Show("This Username Already Taken!");
+                            return;
+                        }
+                        UserVM.CurrentUser.Password = De_En_Crypter.Encrypt(UserVM.PasswordBox.ToString(), "Encrypt");
+                        App.UnitOfWork.Users.Add(UserVM.CurrentUser);
+                        (new CustomMessageBox()).Show("User Added!");
+                    }
+                    else if (UserVM.CurrentUser.Id > 0)
+                    {
+                        App.UnitOfWork.Users.Add(UserVM.CurrentUser);
+                        (new CustomMessageBox()).Show("User Updated!");
+                    }
+                    UserVM.CurrentUser = new User();
                 }
-                else
+                catch (Exception)
                 {
-                    //foreach (var book in CustomerVM.Customers)
-                    //{
-                    //    if (book.No == CustomerVM.CurrentCustomer.No)
-                    //    {
-                    //        book.Name = CustomerVM.CurrentCustomer.Name;
-                    //        book.Surname = CustomerVM.CurrentCustomer.Surname;
-                    //        book.PhoneNumber = CustomerVM.CurrentCustomer.PhoneNumber;
-                    //        book.JoinedDate = CustomerVM.CurrentCustomer.JoinedDate;
-                    //        book.Note = CustomerVM.CurrentCustomer.Note;
-                    //        CustomerVM.CurrentCustomer = new Customer();
-                    //        CustomerVM.btnAddCustomer.Content = "Add";
-                    //        CustomerVM.StateCustomer = 0;
-                    //        return;
-                    //    }
-                    //}
+                    (new CustomMessageBox()).Show("Error!");
                 }
+                UserVM.CurrentUser = new User();
+                UserVM.Users = new ObservableCollection<User>(App.UnitOfWork.Users.GetAll());
                 UserVM.StateUser = 0;
                 return;
             }

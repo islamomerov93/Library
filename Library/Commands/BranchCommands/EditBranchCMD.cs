@@ -6,7 +6,6 @@ namespace Commands.BranchCommands
 {
     public class EditBranchCMD : BaseBranchCommand
     {
-        BranchVM BranchVM;
         public EditBranchCMD(BranchVM BranchVM) : base(BranchVM) { }
 
         public override void Execute(object parameter)

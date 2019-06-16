@@ -39,22 +39,14 @@ namespace Library.ViewModels
             set { customers = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(Customers))); }
         }
 
-        ObservableCollection<Customer> myFilteredCustomers;
-        public ObservableCollection<Customer> MyFilteredCustomers
+        ObservableCollection<Branch> branches;
+        public ObservableCollection<Branch> Branches
         {
-            get
-            {
-                //if (SearchText == null)
-                    return customers;
-                //return new ObservableCollection<Customer>(customers.Where(x => x.Name.ToLower().Contains(SearchText.ToLower()) ||
-                //x.Surname.ToLower().Contains(SearchText.ToLower()) ||
-                //x.PhoneNumber.ToLower().Contains(SearchText.ToLower())).ToList());
-            }
-            set { myFilteredCustomers = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredCustomers))); }
+            get { return branches; }
+            set { branches = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(Branches))); }
         }
 
         private Customer selectedCustomer;
-
         public Customer SelectedCustomer
         {
             get { return selectedCustomer; }
@@ -68,18 +60,6 @@ namespace Library.ViewModels
         {
             get { return currentCustomer; }
             set { currentCustomer = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurrentCustomer))); }
-        }
-
-        private string searchText;
-        public string SearchText
-        {
-            get { return searchText; }
-            set
-            {
-                searchText = value;
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(SearchText)));
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredCustomers)));
-            }
         }
     }
 }

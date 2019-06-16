@@ -41,6 +41,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
@@ -77,6 +80,7 @@
     <Compile Include="Commands\Abstractions\BaseEmployeeCommand.cs" />
     <Compile Include="Commands\Abstractions\BaseUCAddingCommand.cs" />
     <Compile Include="Commands\Abstractions\BaseUserCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseLogInCommand.cs" />
     <Compile Include="Commands\BookCommands\AddBookCMD.cs" />
     <Compile Include="Commands\BookCommands\DeleteBookCMD.cs" />
     <Compile Include="Commands\BookCommands\EditBookCMD.cs" />
@@ -85,6 +89,7 @@
     <Compile Include="Commands\BranchCommands\DeleteBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\EditBranchCMD.cs" />
     <Compile Include="Commands\BranchCommands\RejectBranchCMD.cs" />
+    <Compile Include="Commands\LoginCommands\LogInCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddBookSaleUCCMD.cs" />
     <Compile Include="Commands\UCAddingCommands\AddBookUCCMD.cs" />
     <Compile Include="Commands\CustomerCommands\AddCustomerCMD.cs" />
@@ -105,15 +110,17 @@
     <Compile Include="Commands\UserCommands\DeleteUserCMD.cs" />
     <Compile Include="Commands\UserCommands\EditUserCMD.cs" />
     <Compile Include="Commands\UserCommands\RejectUserCMD.cs" />
-    <Compile Include="DataAccess\EF_CodeFirst\Class1.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\Repositories\RentedBookRepository.cs" />
+    <Compile Include="DataAccess\EF_CodeFirst\UnitOfWork.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\BookRepository.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\BranchRepository.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\SoldBookRepository.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\EmployeeRepository.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\UserRepository.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\Repositories\CustomerRepository.cs" />
-    <Compile Include="Domain\Abstractions\BaseUser.cs" />
-    <Compile Include="Domain\Abstractions\IBookStateRepository.cs" />
+    <Compile Include="Domain\Abstractions\BaseHuman.cs" />
+    <Compile Include="Domain\Abstractions\IRentedBookRepository.cs" />
+    <Compile Include="Domain\Abstractions\ISoldBookRepository.cs" />
     <Compile Include="Domain\Abstractions\IEmployeeRepository.cs" />
     <Compile Include="Domain\Abstractions\IUserRepository.cs" />
     <Compile Include="Domain\Abstractions\ICustomerRepository.cs" />
@@ -126,9 +133,12 @@
     <Compile Include="Domain\Entities\Branch.cs" />
     <Compile Include="Domain\Entities\Customer.cs" />
     <Compile Include="Domain\Entities\Employee.cs" />
-    <Compile Include="Domain\Entities\Permissions.cs" />
     <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="DataAccess\EF_CodeFirst\LibraryDBContext.cs" />
+    <Compile Include="Helper\De_En_Crypter.cs" />
+    <Compile Include="Helper\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\RentedBook.cs" />
     <Compile Include="Models\SoldBook.cs" />
     <Compile Include="Properties\Resources.az.Designer.cs">
@@ -137,10 +147,10 @@
       <DependentUpon>Resources.az.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BaseVM.cs" />
-    <Compile Include="ViewModels\BookRentOrSaleVM.cs" />
     <Compile Include="ViewModels\BookSaleVM.cs" />
     <Compile Include="ViewModels\BookVM.cs" />
     <Compile Include="ViewModels\BranchVM.cs" />
+    <Compile Include="ViewModels\LoginVM.cs" />
     <Compile Include="ViewModels\CustomerVM.cs" />
     <Compile Include="ViewModels\EmployeeVM.cs" />
     <Compile Include="ViewModels\LibraryVM.cs" />
@@ -172,6 +182,10 @@
     <Compile Include="Views\UserControls\UserUC.xaml.cs">
       <DependentUpon>UserUC.xaml</DependentUpon>
     </Compile>
+    <Page Include="Helper\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

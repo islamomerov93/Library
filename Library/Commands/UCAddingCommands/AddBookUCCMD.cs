@@ -6,6 +6,7 @@ namespace Library.Commands.UCAddingCommands
 {
     public class AddBookUCCMD : BaseUCAddingCommand
     {
+
         public AddBookUCCMD(LibraryVM libraryVM) : base(libraryVM) { }
 
         public override void Execute(object parameter)

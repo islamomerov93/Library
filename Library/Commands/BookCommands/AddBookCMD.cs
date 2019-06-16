@@ -1,8 +1,10 @@
-﻿using Library.Commands.Abstractions;
+﻿using Library;
+using Library.Commands.Abstractions;
 using Library.Domain.Entities;
+using Library.Helper;
 using Library.ViewModels;
 using System;
-using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace Commands.BookCommands
 {
@@ -14,41 +16,25 @@ namespace Commands.BookCommands
         {
             if (Convert.ToInt32(parameter) == BookVM.StateBook)
             {
-                if (BookVM.btnAddBook.Content.ToString() == "Add")
+                try
                 {
-                    try
+                    if (BookVM.CurrentBook.Id == 0)
                     {
-                        var No = BookVM.Books.Count + 1;
-                        BookVM.Books.Add(new Book(No, BookVM.CurrentBook.Title, BookVM.CurrentBook.AuthorName, BookVM.CurrentBook.PurchaseCost,
-                        BookVM.CurrentBook.SaleCost, BookVM.CurrentBook.Quantity, BookVM.CurrentBook.Branch, BookVM.CurrentBook.Note));
-                        BookVM.CurrentBook = new Book();
+                        new CustomMessageBox().Show("Book Added!");
                     }
-                    catch (Exception)
+                    else
                     {
-                        MessageBox.Show("Fill all fields", "Error occured while adding book!", MessageBoxButton.OK, MessageBoxImage.Error);
+                        new CustomMessageBox().Show("Book Updated!");
                     }
-                    
+
+                    App.UnitOfWork.Books.Add(BookVM.CurrentBook);
                 }
-                else
+                catch (Exception)
                 {
-                    foreach (var book in BookVM.Books)
-                    {
-                        if (book.No == BookVM.CurrentBook.No)
-                        {
-                            book.Title = BookVM.CurrentBook.Title;
-                            book.AuthorName = BookVM.CurrentBook.AuthorName;
-                            book.PurchaseCost = BookVM.CurrentBook.PurchaseCost;
-                            book.SaleCost = BookVM.CurrentBook.SaleCost;
-                            book.Quantity = BookVM.CurrentBook.Quantity;
-                            book.Branch = BookVM.CurrentBook.Branch;
-                            book.Note = BookVM.CurrentBook.Note;
-                            BookVM.CurrentBook = new Book();
-                            BookVM.btnAddBook.Content = "Add";
-                            BookVM.StateBook = 0;
-                            return;
-                        }
-                    }
+                    new CustomMessageBox().Show("Error!");
                 }
+                BookVM.CurrentBook = new Book();
+                BookVM.Books = new ObservableCollection<Book>(App.UnitOfWork.Books.GetAll());
                 BookVM.StateBook = 0;
                 return;
             }

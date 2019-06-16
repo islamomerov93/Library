@@ -14,18 +14,18 @@ namespace Library.Models
         public virtual Customer Customer { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime SoldTime { get; set; }
         public SoldBook()
         {
 
         }
 
-        public SoldBook(int bookId, int customerId, int userId, DateTime dateTime)
+        public SoldBook(int bookId, int customerId, int userId, DateTime soldTime)
         {
             BookId = bookId;
             CustomerId = customerId;
             UserId = userId;
-            DateTime = dateTime;
+            SoldTime = soldTime;
         }
     }
 }

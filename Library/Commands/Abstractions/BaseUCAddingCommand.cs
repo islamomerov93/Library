@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Library.Commands.Abstractions
 {
-    public abstract class BaseUCAddingCommand
+    public abstract class BaseUCAddingCommand : ICommand
     {
         public LibraryVM LibraryVM { get; set; }
 

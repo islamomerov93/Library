@@ -35,6 +35,8 @@ namespace Library.DataAccess.EF_CodeFirst.Repositories
             {
                 if (book.Id == 0)
                 {
+                    context.Entry(book.Branch).State = System.Data.Entity.EntityState.Unchanged;
+
                     context.Books.Add(book);
                     context.SaveChanges();
                 }
@@ -47,7 +49,6 @@ namespace Library.DataAccess.EF_CodeFirst.Repositories
                     newBook.SaleCost = book.SaleCost;
                     newBook.AuthorName = book.AuthorName;
                     newBook.BranchId = book.Branch.Id;
-                    context.Entry(newBook.Branch).State = System.Data.Entity.EntityState.Unchanged;
                     context.SaveChanges();
                 }
             }

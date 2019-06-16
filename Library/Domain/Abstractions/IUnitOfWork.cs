@@ -7,6 +7,7 @@
         ICustomerRepository Customers { get; }
         IUserRepository Users { get; }
         IEmployeeRepository Employees { get; }
-        IBookStateRepository BookStates { get; }
+        ISoldBookRepository SoldBooks { get; }
+        IRentedBookRepository RentedBooks { get; }
     }
 }

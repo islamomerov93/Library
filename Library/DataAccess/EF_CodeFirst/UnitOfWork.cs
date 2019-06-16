@@ -5,17 +5,12 @@ namespace Library.DataAccess.EF_CodeFirst
 {
     public class UnitOfWork : IUnitOfWork
     {
-
         public IBookRepository Books => new BookRepository();
-
         public IBranchRepository Branches => new BranchRepository();
-
         public ICustomerRepository Customers => new CustomerRepository();
-
         public IUserRepository Users => new UserRepository();
-
         public IEmployeeRepository Employees => new EmployeeRepository();
-
-        public ISoldBookRepository BookStates => throw new SoldBookRepository();
+        public ISoldBookRepository SoldBooks => new SoldBookRepository();
+        public IRentedBookRepository RentedBooks => new RentedBookRepository();
     }
 }

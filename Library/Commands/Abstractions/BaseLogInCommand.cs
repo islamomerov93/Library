@@ -1,20 +1,16 @@
 ﻿using Library.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Library.Commands.Abstractions
 {
-    public abstract class BaseCustomerCommand : ICommand
+    public abstract class BaseLogInCommand : ICommand
     {
-        public CustomerVM CustomerVM { get; set; }
+        public LogInVM LogInVM { get; set; }
 
-        protected BaseCustomerCommand(CustomerVM CustomerVM)
+        protected BaseLogInCommand(LogInVM LogInVM)
         {
-            this.CustomerVM = CustomerVM;
+            this.LogInVM = LogInVM;
         }
 
         public event EventHandler CanExecuteChanged;

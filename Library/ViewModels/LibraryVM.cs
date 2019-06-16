@@ -1,4 +1,5 @@
 ﻿using Library.Commands.UCAddingCommands;
+using Library.Domain.Entities;
 using System.Windows.Controls;
 
 namespace Library.ViewModels
@@ -24,6 +25,14 @@ namespace Library.ViewModels
             AddUserUC = new AddUserUCCMD(this);
             AddSaleReportsUC = new AddSaleReportsUCCMD(this);
             AddRentalReportsUC = new AddRentalReportsUCCMD(this);
+        }
+
+        public string Username
+        {
+            get
+            {
+                return App.CurrentUser.Username;
+            }
         }
         public static Grid Grid { get; set; }
     }

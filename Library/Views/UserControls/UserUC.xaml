@@ -91,17 +91,21 @@
 
 
                             <StackPanel Grid.Column="1">
-                                <CheckBox Content="Can Add User" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddUser,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                <CheckBox Content="Can Add Book" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddBook,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                <CheckBox Content="Can Add Branch" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddBranch,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add User" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanAddUser,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Book" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanAddBook,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Branch" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanAddBranch,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                             </StackPanel>
                             <StackPanel Grid.Column="2">
-                                <CheckBox Content="Can Add Customer" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddCustomer,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                <CheckBox Content="Can Add Employee" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanAddEmployee,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
-                                <CheckBox Content="Can Rent And Sale" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.Permissions.CanRent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Customer" Margin="1 40 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanAddCustomer,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Add Employee" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanAddEmployee,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                                <CheckBox Content="Can Rent And Sale" Margin="1 5 0 0" FontSize="15" IsChecked="{Binding CurrentUser.CanRent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
                             </StackPanel>
 
-                            <PasswordBox  Grid.Column="3" Height="25" Width="145" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5" VerticalAlignment="Top"/>
+                            <PasswordBox x:Name="PasswordBx"  Grid.Column="3" Height="25" Width="145" FontSize="15" HorizontalAlignment="Right" Margin="5 5 5 5" VerticalAlignment="Top">
+                                <PasswordBox.InputBindings>
+                                    <KeyBinding Command="{Binding logInCMD}" CommandParameter="{Binding ElementName=PasswordBx}" Key="Enter" />
+                                </PasswordBox.InputBindings>
+                            </PasswordBox>
 
                             <StackPanel Grid.Column="4">
                                 <Button x:Name="btnAddUser" Height="30" Margin="4 4" Command="{Binding AddUser}" CommandParameter="1">
@@ -110,6 +114,7 @@
                                     </Button.BitmapEffect>
                                     <Button.Style>
                                         <Style TargetType="{x:Type Button}">
+                                            <Setter Property="OverridesDefaultStyle" Value="True"/>
                                             <Setter Property="Content" Value="Add"/>
                                             <Setter Property="IsEnabled" Value="False"/>
                                             <Setter Property="Background" Value="#FF565656"/>
@@ -118,14 +123,14 @@
                                                     <ControlTemplate TargetType="{x:Type Button}">
                                                         <Border CornerRadius="4" Background="{TemplateBinding Background}">
                                                             <Grid>
-                                                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0" />
                                                             </Grid>
                                                         </Border>
 
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -167,7 +172,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -210,7 +215,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -252,7 +257,7 @@
                                                         <ControlTemplate.Triggers>
                                                             <Trigger Property="IsMouseOver" Value="True">
                                                                 <Setter Property="Background" Value="Black" />
-                                                                <Setter Property="Foreground" Value="Cyan" />
+                                                                <Setter Property="Foreground" Value="#FF565656" />
                                                             </Trigger>
                                                             <Trigger Property="IsPressed" Value="True">
                                                                 <Setter Property="Background" Value="OrangeRed" />
@@ -274,7 +279,7 @@
                             </StackPanel>
                         </Grid>
                     </StackPanel>
-                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredUsers}" 
+                    <ListView x:Name="MainListUser" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding Users,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                       SelectedItem="{Binding SelectedUser,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       FontWeight="DemiBold" Margin="0 5 0 0 ">
                         <ListView.ItemContainerStyle>

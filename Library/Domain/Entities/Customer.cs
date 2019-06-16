@@ -3,7 +3,7 @@ using System;
 
 namespace Library.Domain.Entities
 {
-    public class Customer : BaseUser
+    public class Customer : BaseHuman
     {
         public DateTime JoinedDate { get; set; }
         public string PhoneNumber { get; set; }

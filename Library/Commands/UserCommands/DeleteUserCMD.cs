@@ -1,5 +1,7 @@
-﻿using Library.Commands.Abstractions;
+﻿using Library;
+using Library.Commands.Abstractions;
 using Library.Domain.Entities;
+using Library.Helper;
 using Library.ViewModels;
 using System;
 using System.Collections.ObjectModel;
@@ -13,11 +15,18 @@ namespace Commands.UserCommands
 
         public override void Execute(object parameter)
         {
-            int value = Convert.ToInt32(parameter);
-            UserVM.StateUser = value;
-            UserVM.Users.Remove(UserVM.Users.FirstOrDefault(x => x.No == UserVM.CurrentUser.No));
-            UserVM.MyFilteredUsers = new ObservableCollection<User>(UserVM.Users);
-            UserVM.CurrentUser = null;
+            try
+            {
+                App.UnitOfWork.Users.Remove(UserVM.CurrentUser);
+                (new CustomMessageBox()).Show("Deleted!");
+            }
+
+            catch (Exception)
+            {
+                (new CustomMessageBox()).Show("Error!");
+            }
+            UserVM.CurrentUser = new User();
+            UserVM.Users = new System.Collections.ObjectModel.ObservableCollection<User>(App.UnitOfWork.Users.GetAll());
         }
     }
 }

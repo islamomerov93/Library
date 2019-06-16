@@ -293,7 +293,7 @@
                         </StackPanel>
                     </Grid>
                 </StackPanel>
-                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding MyFilteredCustomers}" 
+                    <ListView x:Name="MainListCustomer" Background="#FF565656" Foreground="Black" Grid.Row="2" ItemsSource="{Binding Customers}" 
                       SelectedItem="{Binding SelectedCustomer,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
                       FontWeight="DemiBold" Margin="0 5 0 0 ">
                     <ListView.ItemContainerStyle>

@@ -3,7 +3,6 @@ using Library.Domain.Entities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Controls;
 
 namespace Library.ViewModels
@@ -42,16 +41,11 @@ namespace Library.ViewModels
             set { books = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(Books))); }
         }
 
-        ObservableCollection<Book> myFilteredBooks;
-        public ObservableCollection<Book> MyFilteredBooks
+        ObservableCollection<Branch> branches;
+        public ObservableCollection<Branch> Branches
         {
-            get
-            {
-                if (SearchText == null) return books;
-                return new ObservableCollection<Book>(books.Where(x => x.Title.ToLower().Contains(SearchText.ToLower()) || x.AuthorName.ToLower().Contains(SearchText.ToLower()) ||
-                x.Branch.Address.ToLower().Contains(SearchText.ToLower())).ToList());
-            }
-            set { myFilteredBooks = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredBooks))); }
+            get { return branches; }
+            set { branches = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(Branches))); }
         }
 
         private Book selectedBook;
@@ -66,18 +60,6 @@ namespace Library.ViewModels
         {
             get { return currentBook; }
             set { currentBook = value; OnPropertyChanged(new PropertyChangedEventArgs(nameof(CurrentBook))); }
-        }
-
-        private string searchText;
-        public string SearchText
-        {
-            get { return searchText; }
-            set
-            {
-                searchText = value;
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(SearchText)));
-                OnPropertyChanged(new PropertyChangedEventArgs(nameof(MyFilteredBooks)));
-            }
         }
     }
 }

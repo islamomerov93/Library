@@ -10,9 +10,11 @@ namespace Library.Domain.Entities
         public int Id { get; set; }
         [NotMapped]
         public int No { get; set; }
-        [Column(TypeName = "nvarchar(200)")]
+        [Column(TypeName = "nvarchar")]
+        [StringLength(200)]
         public string Title { get; set; }
-        [Column(TypeName = "nvarchar(60)")]
+        [Column(TypeName = "nvarchar")]
+        [StringLength(60)]
         public string AuthorName { get; set; }
         public decimal PurchaseCost { get; set; }
         public decimal SaleCost { get; set; }
@@ -26,7 +28,7 @@ namespace Library.Domain.Entities
 
         public Book Clone()
         {
-            return new Book(No, Title, AuthorName, PurchaseCost, SaleCost, Quantity, Branch, Note);
+            return new Book(Id ,No, Title, AuthorName, PurchaseCost, SaleCost, Quantity, BranchId, Branch, Note);
         }
 
         public void Clear()
@@ -37,16 +39,19 @@ namespace Library.Domain.Entities
             Branch = null;
 
         }
-        public Book(int no, string title, string authorName, float purchaseCost, int saleCost, int quantity, Branch branch, string note)
+
+        public Book(int id, int no, string title, string authorName, decimal purchaseCost, decimal saleCost, decimal quantity, int branchId, Branch branch, string note)
         {
+            Id = id;
             No = no;
-            Title = title ?? throw new ArgumentNullException(nameof(title));
-            AuthorName = authorName ?? throw new ArgumentNullException(nameof(authorName));
+            Title = title;
+            AuthorName = authorName;
             PurchaseCost = purchaseCost;
             SaleCost = saleCost;
             Quantity = quantity;
-            Branch = branch; /*?? throw new ArgumentNullException(nameof(branch));*/
             Note = note;
+            BranchId = branchId;
+            Branch = branch;
         }
     }
 }

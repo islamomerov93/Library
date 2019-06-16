@@ -22,10 +22,10 @@
         </Storyboard>
 
         <Storyboard x:Key="sbShowTopMenu" >
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-80,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.3" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,-55,0,0" To="0,0,0,0" DecelerationRatio=".9" Duration="0:0:0.3" />
         </Storyboard>
         <Storyboard x:Key="sbHideTopMenu">
-            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-80,0,0" AccelerationRatio=".9" Duration="0:0:0.3" />
+            <ThicknessAnimation Storyboard.TargetProperty="Margin" From="0,0,0,0" To="0,-55,0,0" AccelerationRatio=".9" Duration="0:0:0.3" />
         </Storyboard>
 
         <Storyboard x:Key="sbShowRightMenu" >
@@ -110,8 +110,8 @@
                         </Button>
                     </Grid>
                 </StackPanel>
-                <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="343,-80,342.6,0">
-                    <Border BorderBrush="OrangeRed" BorderThickness="2" Height="70" Background="#FF373B3C" Opacity="0.9" CornerRadius="0,0,20,20">
+                <StackPanel Panel.ZIndex="2" Name="pnlTopMenu" Orientation="Vertical" Width="300" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="343,-55,342.6,0">
+                    <Border BorderBrush="OrangeRed" BorderThickness="2" Height="50" Background="#FF373B3C" Opacity="0.9" CornerRadius="0,0,20,20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -119,12 +119,10 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel>
                                 <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 10 10 10" HorizontalAlignment="Right" FontWeight="SemiBold" Text="{x:Static p:Resources.Name}"/>
-                                <TextBlock Background="#FF565656" Width="70" TextAlignment="Right" Margin="10 0 10 10" HorizontalAlignment="Right" FontWeight="SemiBold" Text="{x:Static p:Resources.Surname}"/>
                             </StackPanel>
                         <StackPanel Grid.Column="1">
-                                <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 10 10 10" HorizontalAlignment="Left" Text="{Binding User.Name}" Grid.Column="1" FontWeight="SemiBold"/>
-                                <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 0 10 10" HorizontalAlignment="Left" Text="{Binding User.Surname}" Grid.Column="1" FontWeight="SemiBold"/>
-                        </StackPanel>
+                                <TextBlock Background="#FF565656" Width="100" TextAlignment="Center" Margin="1 10 10 10" HorizontalAlignment="Left" Text="{Binding Username}" Grid.Column="1" FontWeight="SemiBold"/>
+                            </StackPanel>
                     </Grid>
                 </Border>
                 <Grid>

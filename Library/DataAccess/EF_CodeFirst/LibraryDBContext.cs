@@ -8,7 +8,7 @@ namespace Library.Domain
     {
         public LibraryDBContext()
 
-            : base("name=LibraryDBContext")
+            : base("name=Library")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<LibraryDBContext, Configuration>());
         }
@@ -21,7 +21,6 @@ namespace Library.Domain
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-        public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<SoldBook> SoldBooks { get; set; }
         public virtual DbSet<RentedBook> RentedBooks { get; set; }
     }
